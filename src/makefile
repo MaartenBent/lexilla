@@ -113,8 +113,8 @@ OBJS = Lexilla.o
 # Required by lexers
 LEXLIB_OBJS=\
 	Accessor.o \
-	CharacterCategory.o \
-	CharacterSet.o \
+	LexCharacterCategory.o \
+	LexCharacterSet.o \
 	DefaultLexer.o \
 	InList.o \
 	LexAccessor.o \

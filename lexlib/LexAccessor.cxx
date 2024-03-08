@@ -13,7 +13,7 @@
 #include "ILexer.h"
 
 #include "LexAccessor.h"
-#include "CharacterSet.h"
+#include "LexCharacterSet.h"
 
 using namespace Lexilla;
 

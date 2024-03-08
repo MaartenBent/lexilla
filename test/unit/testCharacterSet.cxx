@@ -7,7 +7,7 @@
 
 #include <string_view>
 
-#include "CharacterSet.h"
+#include "LexCharacterSet.h"
 
 #include "catch.hpp"
 

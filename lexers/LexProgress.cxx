@@ -35,7 +35,7 @@ Differentiate between labels and variables
 #include "WordList.h"
 #include "LexAccessor.h"
 #include "StyleContext.h"
-#include "CharacterSet.h"
+#include "LexCharacterSet.h"
 #include "LexerModule.h"
 #include "OptionSet.h"
 #include "SparseState.h"

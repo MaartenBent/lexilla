@@ -39,7 +39,7 @@ style.simple.1=fore:#FF0000
 #include "LexAccessor.h"
 #include "Accessor.h"
 #include "StyleContext.h"
-#include "CharacterSet.h"
+#include "LexCharacterSet.h"
 #include "LexerModule.h"
 #include "LexerBase.h"
 

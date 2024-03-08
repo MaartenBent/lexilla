@@ -203,8 +203,8 @@ LEX_OBJS=\
 # Required by lexers
 LEXLIB_OBJS=\
 	$(DIR_O)\Accessor.obj \
-	$(DIR_O)\CharacterCategory.obj \
-	$(DIR_O)\CharacterSet.obj \
+	$(DIR_O)\LexCharacterCategory.obj \
+	$(DIR_O)\LexCharacterSet.obj \
 	$(DIR_O)\DefaultLexer.obj \
 	$(DIR_O)\InList.obj \
 	$(DIR_O)\LexAccessor.obj \

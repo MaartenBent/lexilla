@@ -23,7 +23,7 @@
 #include "LexAccessor.h"
 #include "Accessor.h"
 #include "StyleContext.h"
-#include "CharacterSet.h"
+#include "LexCharacterSet.h"
 #include "LexerModule.h"
 
 #if defined(__clang__)

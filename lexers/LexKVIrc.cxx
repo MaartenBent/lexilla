@@ -25,7 +25,7 @@
 #include "LexAccessor.h"
 #include "Accessor.h"
 #include "StyleContext.h"
-#include "CharacterSet.h"
+#include "LexCharacterSet.h"
 #include "LexerModule.h"
 
 using namespace Lexilla;
@@ -126,7 +126,7 @@ static void ColouriseKVIrcDoc(Sci_PositionU startPos, Sci_Position length,
                 }
 
                 /* Detecting numbers - isdigit is unsafe as it does not
-                 * validate, use CharacterSet.h functions */
+                 * validate, use LexCharacterSet.h functions */
                 if (IsADigit(sc.ch))
                 {
                     sc.SetState(SCE_KVIRC_NUMBER);

@@ -1,12 +1,12 @@
 // Scintilla source code edit control
-/** @file CharacterCategory.h
+/** @file LexCharacterCategory.h
  ** Returns the Unicode general category of a character.
  **/
 // Copyright 2013 by Neil Hodgson <neilh@scintilla.org>
 // The License.txt file describes the conditions under which this software may be distributed.
 
-#ifndef CHARACTERCATEGORY_H
-#define CHARACTERCATEGORY_H
+#ifndef LEXCHARACTERCATEGORY_H
+#define LEXCHARACTERCATEGORY_H
 
 namespace Lexilla {
 

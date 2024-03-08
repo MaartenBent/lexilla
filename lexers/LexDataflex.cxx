@@ -64,7 +64,7 @@ The list of keywords that can be used in dataflex.properties file (up to DataFle
 #include "LexAccessor.h"
 #include "Accessor.h"
 #include "StyleContext.h"
-#include "CharacterSet.h"
+#include "LexCharacterSet.h"
 #include "LexerModule.h"
 
 using namespace Lexilla;

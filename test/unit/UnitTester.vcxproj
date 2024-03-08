@@ -151,7 +151,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\..\lexlib\Accessor.cxx" />
-    <ClCompile Include="..\..\lexlib\CharacterSet.cxx" />
+    <ClCompile Include="..\..\lexlib\LexCharacterSet.cxx" />
     <ClCompile Include="..\..\lexlib\InList.cxx" />
     <ClCompile Include="..\..\lexlib\LexerBase.cxx" />
     <ClCompile Include="..\..\lexlib\LexerModule.cxx" />

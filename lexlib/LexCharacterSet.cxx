@@ -1,5 +1,5 @@
 // Scintilla source code edit control
-/** @file CharacterSet.cxx
+/** @file LexCharacterSet.cxx
  ** Simple case functions for ASCII.
  ** Lexer infrastructure.
  **/
@@ -11,7 +11,7 @@
 
 #include <string>
 
-#include "CharacterSet.h"
+#include "LexCharacterSet.h"
 
 using namespace Lexilla;
 

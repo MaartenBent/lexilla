@@ -1,12 +1,12 @@
 // Scintilla source code edit control
-/** @file CharacterSet.h
+/** @file LexCharacterSet.h
  ** Encapsulates a set of characters. Used to test if a character is within a set.
  **/
 // Copyright 2007 by Neil Hodgson <neilh@scintilla.org>
 // The License.txt file describes the conditions under which this software may be distributed.
 
-#ifndef CHARACTERSET_H
-#define CHARACTERSET_H
+#ifndef CHARACTERSETARRAY_H
+#define CHARACTERSETARRAY_H
 
 #include <vector>
 #include <algorithm>

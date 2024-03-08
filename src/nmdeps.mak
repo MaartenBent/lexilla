@@ -15,12 +15,12 @@ $(DIR_O)/Accessor.obj: \
 	../lexlib/WordList.h \
 	../lexlib/LexAccessor.h \
 	../lexlib/Accessor.h
-$(DIR_O)/CharacterCategory.obj: \
-	../lexlib/CharacterCategory.cxx \
-	../lexlib/CharacterCategory.h
-$(DIR_O)/CharacterSet.obj: \
-	../lexlib/CharacterSet.cxx \
-	../lexlib/CharacterSet.h
+$(DIR_O)/LexCharacterCategory.obj: \
+	../lexlib/LexCharacterCategory.cxx \
+	../lexlib/LexCharacterCategory.h
+$(DIR_O)/LexCharacterSet.obj: \
+	../lexlib/LexCharacterSet.cxx \
+	../lexlib/LexCharacterSet.h
 $(DIR_O)/DefaultLexer.obj: \
 	../lexlib/DefaultLexer.cxx \
 	../../scintilla/include/ILexer.h \
@@ -36,13 +36,13 @@ $(DIR_O)/DefaultLexer.obj: \
 $(DIR_O)/InList.obj: \
 	../lexlib/InList.cxx \
 	../lexlib/InList.h \
-	../lexlib/CharacterSet.h
+	../lexlib/LexCharacterSet.h
 $(DIR_O)/LexAccessor.obj: \
 	../lexlib/LexAccessor.cxx \
 	../../scintilla/include/ILexer.h \
 	../../scintilla/include/Sci_Position.h \
 	../lexlib/LexAccessor.h \
-	../lexlib/CharacterSet.h
+	../lexlib/LexCharacterSet.h
 $(DIR_O)/LexerBase.obj: \
 	../lexlib/LexerBase.cxx \
 	../../scintilla/include/ILexer.h \
@@ -104,7 +104,7 @@ $(DIR_O)/StyleContext.obj: \
 	../lexlib/LexAccessor.h \
 	../lexlib/Accessor.h \
 	../lexlib/StyleContext.h \
-	../lexlib/CharacterSet.h
+	../lexlib/LexCharacterSet.h
 $(DIR_O)/WordList.obj: \
 	../lexlib/WordList.cxx \
 	../lexlib/WordList.h
@@ -118,7 +118,7 @@ $(DIR_O)/LexA68k.obj: \
 	../lexlib/LexAccessor.h \
 	../lexlib/Accessor.h \
 	../lexlib/StyleContext.h \
-	../lexlib/CharacterSet.h \
+	../lexlib/LexCharacterSet.h \
 	../lexlib/LexerModule.h
 $(DIR_O)/LexAbaqus.obj: \
 	../lexers/LexAbaqus.cxx \
@@ -130,7 +130,7 @@ $(DIR_O)/LexAbaqus.obj: \
 	../lexlib/LexAccessor.h \
 	../lexlib/Accessor.h \
 	../lexlib/StyleContext.h \
-	../lexlib/CharacterSet.h \
+	../lexlib/LexCharacterSet.h \
 	../lexlib/LexerModule.h
 $(DIR_O)/LexAda.obj: \
 	../lexers/LexAda.cxx \
@@ -142,7 +142,7 @@ $(DIR_O)/LexAda.obj: \
 	../lexlib/LexAccessor.h \
 	../lexlib/Accessor.h \
 	../lexlib/StyleContext.h \
-	../lexlib/CharacterSet.h \
+	../lexlib/LexCharacterSet.h \
 	../lexlib/LexerModule.h
 $(DIR_O)/LexAPDL.obj: \
 	../lexers/LexAPDL.cxx \
@@ -154,7 +154,7 @@ $(DIR_O)/LexAPDL.obj: \
 	../lexlib/LexAccessor.h \
 	../lexlib/Accessor.h \
 	../lexlib/StyleContext.h \
-	../lexlib/CharacterSet.h \
+	../lexlib/LexCharacterSet.h \
 	../lexlib/LexerModule.h
 $(DIR_O)/LexAsciidoc.obj: \
 	../lexers/LexAsciidoc.cxx \
@@ -166,7 +166,7 @@ $(DIR_O)/LexAsciidoc.obj: \
 	../lexlib/LexAccessor.h \
 	../lexlib/Accessor.h \
 	../lexlib/StyleContext.h \
-	../lexlib/CharacterSet.h \
+	../lexlib/LexCharacterSet.h \
 	../lexlib/LexerModule.h
 $(DIR_O)/LexAsm.obj: \
 	../lexers/LexAsm.cxx \
@@ -177,7 +177,7 @@ $(DIR_O)/LexAsm.obj: \
 	../lexlib/WordList.h \
 	../lexlib/LexAccessor.h \
 	../lexlib/StyleContext.h \
-	../lexlib/CharacterSet.h \
+	../lexlib/LexCharacterSet.h \
 	../lexlib/LexerModule.h \
 	../lexlib/OptionSet.h \
 	../lexlib/DefaultLexer.h
@@ -191,7 +191,7 @@ $(DIR_O)/LexAsn1.obj: \
 	../lexlib/LexAccessor.h \
 	../lexlib/Accessor.h \
 	../lexlib/StyleContext.h \
-	../lexlib/CharacterSet.h \
+	../lexlib/LexCharacterSet.h \
 	../lexlib/LexerModule.h
 $(DIR_O)/LexASY.obj: \
 	../lexers/LexASY.cxx \
@@ -203,7 +203,7 @@ $(DIR_O)/LexASY.obj: \
 	../lexlib/LexAccessor.h \
 	../lexlib/Accessor.h \
 	../lexlib/StyleContext.h \
-	../lexlib/CharacterSet.h \
+	../lexlib/LexCharacterSet.h \
 	../lexlib/LexerModule.h
 $(DIR_O)/LexAU3.obj: \
 	../lexers/LexAU3.cxx \
@@ -215,7 +215,7 @@ $(DIR_O)/LexAU3.obj: \
 	../lexlib/LexAccessor.h \
 	../lexlib/Accessor.h \
 	../lexlib/StyleContext.h \
-	../lexlib/CharacterSet.h \
+	../lexlib/LexCharacterSet.h \
 	../lexlib/LexerModule.h
 $(DIR_O)/LexAVE.obj: \
 	../lexers/LexAVE.cxx \
@@ -227,7 +227,7 @@ $(DIR_O)/LexAVE.obj: \
 	../lexlib/LexAccessor.h \
 	../lexlib/Accessor.h \
 	../lexlib/StyleContext.h \
-	../lexlib/CharacterSet.h \
+	../lexlib/LexCharacterSet.h \
 	../lexlib/LexerModule.h
 $(DIR_O)/LexAVS.obj: \
 	../lexers/LexAVS.cxx \
@@ -239,7 +239,7 @@ $(DIR_O)/LexAVS.obj: \
 	../lexlib/LexAccessor.h \
 	../lexlib/Accessor.h \
 	../lexlib/StyleContext.h \
-	../lexlib/CharacterSet.h \
+	../lexlib/LexCharacterSet.h \
 	../lexlib/LexerModule.h
 $(DIR_O)/LexBaan.obj: \
 	../lexers/LexBaan.cxx \
@@ -250,7 +250,7 @@ $(DIR_O)/LexBaan.obj: \
 	../lexlib/WordList.h \
 	../lexlib/LexAccessor.h \
 	../lexlib/StyleContext.h \
-	../lexlib/CharacterSet.h \
+	../lexlib/LexCharacterSet.h \
 	../lexlib/LexerModule.h \
 	../lexlib/OptionSet.h \
 	../lexlib/DefaultLexer.h
@@ -265,7 +265,7 @@ $(DIR_O)/LexBash.obj: \
 	../lexlib/WordList.h \
 	../lexlib/LexAccessor.h \
 	../lexlib/StyleContext.h \
-	../lexlib/CharacterSet.h \
+	../lexlib/LexCharacterSet.h \
 	../lexlib/LexerModule.h \
 	../lexlib/OptionSet.h \
 	../lexlib/SubStyles.h \
@@ -279,7 +279,7 @@ $(DIR_O)/LexBasic.obj: \
 	../lexlib/WordList.h \
 	../lexlib/LexAccessor.h \
 	../lexlib/StyleContext.h \
-	../lexlib/CharacterSet.h \
+	../lexlib/LexCharacterSet.h \
 	../lexlib/LexerModule.h \
 	../lexlib/OptionSet.h \
 	../lexlib/DefaultLexer.h
@@ -294,7 +294,7 @@ $(DIR_O)/LexBatch.obj: \
 	../lexlib/LexAccessor.h \
 	../lexlib/Accessor.h \
 	../lexlib/StyleContext.h \
-	../lexlib/CharacterSet.h \
+	../lexlib/LexCharacterSet.h \
 	../lexlib/LexerModule.h
 $(DIR_O)/LexBibTeX.obj: \
 	../lexers/LexBibTeX.cxx \
@@ -307,7 +307,7 @@ $(DIR_O)/LexBibTeX.obj: \
 	../lexlib/LexAccessor.h \
 	../lexlib/Accessor.h \
 	../lexlib/StyleContext.h \
-	../lexlib/CharacterSet.h \
+	../lexlib/LexCharacterSet.h \
 	../lexlib/LexerModule.h
 $(DIR_O)/LexBullant.obj: \
 	../lexers/LexBullant.cxx \
@@ -319,7 +319,7 @@ $(DIR_O)/LexBullant.obj: \
 	../lexlib/LexAccessor.h \
 	../lexlib/Accessor.h \
 	../lexlib/StyleContext.h \
-	../lexlib/CharacterSet.h \
+	../lexlib/LexCharacterSet.h \
 	../lexlib/LexerModule.h
 $(DIR_O)/LexCaml.obj: \
 	../lexers/LexCaml.cxx \
@@ -331,7 +331,7 @@ $(DIR_O)/LexCaml.obj: \
 	../lexlib/LexAccessor.h \
 	../lexlib/Accessor.h \
 	../lexlib/StyleContext.h \
-	../lexlib/CharacterSet.h \
+	../lexlib/LexCharacterSet.h \
 	../lexlib/LexerModule.h
 $(DIR_O)/LexCIL.obj: \
 	../lexers/LexCIL.cxx \
@@ -344,7 +344,7 @@ $(DIR_O)/LexCIL.obj: \
 	../lexlib/LexAccessor.h \
 	../lexlib/Accessor.h \
 	../lexlib/StyleContext.h \
-	../lexlib/CharacterSet.h \
+	../lexlib/LexCharacterSet.h \
 	../lexlib/LexerModule.h \
 	../lexlib/OptionSet.h \
 	../lexlib/DefaultLexer.h
@@ -358,7 +358,7 @@ $(DIR_O)/LexCLW.obj: \
 	../lexlib/LexAccessor.h \
 	../lexlib/Accessor.h \
 	../lexlib/StyleContext.h \
-	../lexlib/CharacterSet.h \
+	../lexlib/LexCharacterSet.h \
 	../lexlib/LexerModule.h
 $(DIR_O)/LexCmake.obj: \
 	../lexers/LexCmake.cxx \
@@ -370,7 +370,7 @@ $(DIR_O)/LexCmake.obj: \
 	../lexlib/LexAccessor.h \
 	../lexlib/Accessor.h \
 	../lexlib/StyleContext.h \
-	../lexlib/CharacterSet.h \
+	../lexlib/LexCharacterSet.h \
 	../lexlib/LexerModule.h
 $(DIR_O)/LexCOBOL.obj: \
 	../lexers/LexCOBOL.cxx \
@@ -382,7 +382,7 @@ $(DIR_O)/LexCOBOL.obj: \
 	../lexlib/LexAccessor.h \
 	../lexlib/Accessor.h \
 	../lexlib/StyleContext.h \
-	../lexlib/CharacterSet.h \
+	../lexlib/LexCharacterSet.h \
 	../lexlib/LexerModule.h
 $(DIR_O)/LexCoffeeScript.obj: \
 	../lexers/LexCoffeeScript.cxx \
@@ -394,7 +394,7 @@ $(DIR_O)/LexCoffeeScript.obj: \
 	../lexlib/LexAccessor.h \
 	../lexlib/Accessor.h \
 	../lexlib/StyleContext.h \
-	../lexlib/CharacterSet.h \
+	../lexlib/LexCharacterSet.h \
 	../lexlib/LexerModule.h
 $(DIR_O)/LexConf.obj: \
 	../lexers/LexConf.cxx \
@@ -406,7 +406,7 @@ $(DIR_O)/LexConf.obj: \
 	../lexlib/LexAccessor.h \
 	../lexlib/Accessor.h \
 	../lexlib/StyleContext.h \
-	../lexlib/CharacterSet.h \
+	../lexlib/LexCharacterSet.h \
 	../lexlib/LexerModule.h
 $(DIR_O)/LexCPP.obj: \
 	../lexers/LexCPP.cxx \
@@ -419,7 +419,7 @@ $(DIR_O)/LexCPP.obj: \
 	../lexlib/LexAccessor.h \
 	../lexlib/Accessor.h \
 	../lexlib/StyleContext.h \
-	../lexlib/CharacterSet.h \
+	../lexlib/LexCharacterSet.h \
 	../lexlib/LexerModule.h \
 	../lexlib/OptionSet.h \
 	../lexlib/SparseState.h \
@@ -434,7 +434,7 @@ $(DIR_O)/LexCrontab.obj: \
 	../lexlib/LexAccessor.h \
 	../lexlib/Accessor.h \
 	../lexlib/StyleContext.h \
-	../lexlib/CharacterSet.h \
+	../lexlib/LexCharacterSet.h \
 	../lexlib/LexerModule.h
 $(DIR_O)/LexCsound.obj: \
 	../lexers/LexCsound.cxx \
@@ -446,7 +446,7 @@ $(DIR_O)/LexCsound.obj: \
 	../lexlib/LexAccessor.h \
 	../lexlib/Accessor.h \
 	../lexlib/StyleContext.h \
-	../lexlib/CharacterSet.h \
+	../lexlib/LexCharacterSet.h \
 	../lexlib/LexerModule.h
 $(DIR_O)/LexCSS.obj: \
 	../lexers/LexCSS.cxx \
@@ -458,7 +458,7 @@ $(DIR_O)/LexCSS.obj: \
 	../lexlib/LexAccessor.h \
 	../lexlib/Accessor.h \
 	../lexlib/StyleContext.h \
-	../lexlib/CharacterSet.h \
+	../lexlib/LexCharacterSet.h \
 	../lexlib/LexerModule.h
 $(DIR_O)/LexD.obj: \
 	../lexers/LexD.cxx \
@@ -469,7 +469,7 @@ $(DIR_O)/LexD.obj: \
 	../lexlib/WordList.h \
 	../lexlib/LexAccessor.h \
 	../lexlib/StyleContext.h \
-	../lexlib/CharacterSet.h \
+	../lexlib/LexCharacterSet.h \
 	../lexlib/LexerModule.h \
 	../lexlib/OptionSet.h \
 	../lexlib/DefaultLexer.h
@@ -483,7 +483,7 @@ $(DIR_O)/LexDataflex.obj: \
 	../lexlib/LexAccessor.h \
 	../lexlib/Accessor.h \
 	../lexlib/StyleContext.h \
-	../lexlib/CharacterSet.h \
+	../lexlib/LexCharacterSet.h \
 	../lexlib/LexerModule.h
 $(DIR_O)/LexDiff.obj: \
 	../lexers/LexDiff.cxx \
@@ -495,7 +495,7 @@ $(DIR_O)/LexDiff.obj: \
 	../lexlib/LexAccessor.h \
 	../lexlib/Accessor.h \
 	../lexlib/StyleContext.h \
-	../lexlib/CharacterSet.h \
+	../lexlib/LexCharacterSet.h \
 	../lexlib/LexerModule.h
 $(DIR_O)/LexDMAP.obj: \
 	../lexers/LexDMAP.cxx \
@@ -507,7 +507,7 @@ $(DIR_O)/LexDMAP.obj: \
 	../lexlib/LexAccessor.h \
 	../lexlib/Accessor.h \
 	../lexlib/StyleContext.h \
-	../lexlib/CharacterSet.h \
+	../lexlib/LexCharacterSet.h \
 	../lexlib/LexerModule.h
 $(DIR_O)/LexDMIS.obj: \
 	../lexers/LexDMIS.cxx \
@@ -518,7 +518,7 @@ $(DIR_O)/LexDMIS.obj: \
 	../lexlib/WordList.h \
 	../lexlib/LexAccessor.h \
 	../lexlib/StyleContext.h \
-	../lexlib/CharacterSet.h \
+	../lexlib/LexCharacterSet.h \
 	../lexlib/LexerModule.h \
 	../lexlib/DefaultLexer.h
 $(DIR_O)/LexECL.obj: \
@@ -532,7 +532,7 @@ $(DIR_O)/LexECL.obj: \
 	../lexlib/LexAccessor.h \
 	../lexlib/Accessor.h \
 	../lexlib/StyleContext.h \
-	../lexlib/CharacterSet.h \
+	../lexlib/LexCharacterSet.h \
 	../lexlib/LexerModule.h \
 	../lexlib/OptionSet.h
 $(DIR_O)/LexEDIFACT.obj: \
@@ -554,7 +554,7 @@ $(DIR_O)/LexEiffel.obj: \
 	../lexlib/LexAccessor.h \
 	../lexlib/Accessor.h \
 	../lexlib/StyleContext.h \
-	../lexlib/CharacterSet.h \
+	../lexlib/LexCharacterSet.h \
 	../lexlib/LexerModule.h
 $(DIR_O)/LexErlang.obj: \
 	../lexers/LexErlang.cxx \
@@ -566,7 +566,7 @@ $(DIR_O)/LexErlang.obj: \
 	../lexlib/LexAccessor.h \
 	../lexlib/Accessor.h \
 	../lexlib/StyleContext.h \
-	../lexlib/CharacterSet.h \
+	../lexlib/LexCharacterSet.h \
 	../lexlib/LexerModule.h
 $(DIR_O)/LexErrorList.obj: \
 	../lexers/LexErrorList.cxx \
@@ -579,7 +579,7 @@ $(DIR_O)/LexErrorList.obj: \
 	../lexlib/LexAccessor.h \
 	../lexlib/Accessor.h \
 	../lexlib/StyleContext.h \
-	../lexlib/CharacterSet.h \
+	../lexlib/LexCharacterSet.h \
 	../lexlib/LexerModule.h
 $(DIR_O)/LexEScript.obj: \
 	../lexers/LexEScript.cxx \
@@ -591,7 +591,7 @@ $(DIR_O)/LexEScript.obj: \
 	../lexlib/LexAccessor.h \
 	../lexlib/Accessor.h \
 	../lexlib/StyleContext.h \
-	../lexlib/CharacterSet.h \
+	../lexlib/LexCharacterSet.h \
 	../lexlib/LexerModule.h
 $(DIR_O)/LexFlagship.obj: \
 	../lexers/LexFlagship.cxx \
@@ -603,7 +603,7 @@ $(DIR_O)/LexFlagship.obj: \
 	../lexlib/LexAccessor.h \
 	../lexlib/Accessor.h \
 	../lexlib/StyleContext.h \
-	../lexlib/CharacterSet.h \
+	../lexlib/LexCharacterSet.h \
 	../lexlib/LexerModule.h
 $(DIR_O)/LexForth.obj: \
 	../lexers/LexForth.cxx \
@@ -615,7 +615,7 @@ $(DIR_O)/LexForth.obj: \
 	../lexlib/LexAccessor.h \
 	../lexlib/Accessor.h \
 	../lexlib/StyleContext.h \
-	../lexlib/CharacterSet.h \
+	../lexlib/LexCharacterSet.h \
 	../lexlib/LexerModule.h
 $(DIR_O)/LexFortran.obj: \
 	../lexers/LexFortran.cxx \
@@ -627,7 +627,7 @@ $(DIR_O)/LexFortran.obj: \
 	../lexlib/LexAccessor.h \
 	../lexlib/Accessor.h \
 	../lexlib/StyleContext.h \
-	../lexlib/CharacterSet.h \
+	../lexlib/LexCharacterSet.h \
 	../lexlib/LexerModule.h
 $(DIR_O)/LexFSharp.obj: \
 	../lexers/LexFSharp.cxx \
@@ -638,7 +638,7 @@ $(DIR_O)/LexFSharp.obj: \
 	../lexlib/WordList.h \
 	../lexlib/LexAccessor.h \
 	../lexlib/StyleContext.h \
-	../lexlib/CharacterSet.h \
+	../lexlib/LexCharacterSet.h \
 	../lexlib/LexerModule.h \
 	../lexlib/OptionSet.h \
 	../lexlib/DefaultLexer.h
@@ -652,7 +652,7 @@ $(DIR_O)/LexGAP.obj: \
 	../lexlib/LexAccessor.h \
 	../lexlib/Accessor.h \
 	../lexlib/StyleContext.h \
-	../lexlib/CharacterSet.h \
+	../lexlib/LexCharacterSet.h \
 	../lexlib/LexerModule.h
 $(DIR_O)/LexGDScript.obj: \
 	../lexers/LexGDScript.cxx \
@@ -665,8 +665,8 @@ $(DIR_O)/LexGDScript.obj: \
 	../lexlib/LexAccessor.h \
 	../lexlib/Accessor.h \
 	../lexlib/StyleContext.h \
-	../lexlib/CharacterSet.h \
-	../lexlib/CharacterCategory.h \
+	../lexlib/LexCharacterSet.h \
+	../lexlib/LexCharacterCategory.h \
 	../lexlib/LexerModule.h \
 	../lexlib/OptionSet.h \
 	../lexlib/SubStyles.h \
@@ -681,7 +681,7 @@ $(DIR_O)/LexGui4Cli.obj: \
 	../lexlib/LexAccessor.h \
 	../lexlib/Accessor.h \
 	../lexlib/StyleContext.h \
-	../lexlib/CharacterSet.h \
+	../lexlib/LexCharacterSet.h \
 	../lexlib/LexerModule.h
 $(DIR_O)/LexHaskell.obj: \
 	../lexers/LexHaskell.cxx \
@@ -694,8 +694,8 @@ $(DIR_O)/LexHaskell.obj: \
 	../lexlib/LexAccessor.h \
 	../lexlib/Accessor.h \
 	../lexlib/StyleContext.h \
-	../lexlib/CharacterSet.h \
-	../lexlib/CharacterCategory.h \
+	../lexlib/LexCharacterSet.h \
+	../lexlib/LexCharacterCategory.h \
 	../lexlib/LexerModule.h \
 	../lexlib/OptionSet.h \
 	../lexlib/DefaultLexer.h
@@ -709,7 +709,7 @@ $(DIR_O)/LexHex.obj: \
 	../lexlib/LexAccessor.h \
 	../lexlib/Accessor.h \
 	../lexlib/StyleContext.h \
-	../lexlib/CharacterSet.h \
+	../lexlib/LexCharacterSet.h \
 	../lexlib/LexerModule.h
 $(DIR_O)/LexHollywood.obj: \
 	../lexers/LexHollywood.cxx \
@@ -720,7 +720,7 @@ $(DIR_O)/LexHollywood.obj: \
 	../lexlib/WordList.h \
 	../lexlib/LexAccessor.h \
 	../lexlib/StyleContext.h \
-	../lexlib/CharacterSet.h \
+	../lexlib/LexCharacterSet.h \
 	../lexlib/LexerModule.h \
 	../lexlib/OptionSet.h \
 	../lexlib/DefaultLexer.h
@@ -734,7 +734,7 @@ $(DIR_O)/LexHTML.obj: \
 	../lexlib/LexAccessor.h \
 	../lexlib/Accessor.h \
 	../lexlib/StyleContext.h \
-	../lexlib/CharacterSet.h \
+	../lexlib/LexCharacterSet.h \
 	../lexlib/LexerModule.h \
 	../lexlib/OptionSet.h \
 	../lexlib/DefaultLexer.h
@@ -748,7 +748,7 @@ $(DIR_O)/LexIndent.obj: \
 	../lexlib/LexAccessor.h \
 	../lexlib/Accessor.h \
 	../lexlib/StyleContext.h \
-	../lexlib/CharacterSet.h \
+	../lexlib/LexCharacterSet.h \
 	../lexlib/LexerModule.h
 $(DIR_O)/LexInno.obj: \
 	../lexers/LexInno.cxx \
@@ -760,7 +760,7 @@ $(DIR_O)/LexInno.obj: \
 	../lexlib/LexAccessor.h \
 	../lexlib/Accessor.h \
 	../lexlib/StyleContext.h \
-	../lexlib/CharacterSet.h \
+	../lexlib/LexCharacterSet.h \
 	../lexlib/LexerModule.h
 $(DIR_O)/LexJSON.obj: \
 	../lexers/LexJSON.cxx \
@@ -771,7 +771,7 @@ $(DIR_O)/LexJSON.obj: \
 	../lexlib/WordList.h \
 	../lexlib/LexAccessor.h \
 	../lexlib/StyleContext.h \
-	../lexlib/CharacterSet.h \
+	../lexlib/LexCharacterSet.h \
 	../lexlib/LexerModule.h \
 	../lexlib/OptionSet.h \
 	../lexlib/DefaultLexer.h
@@ -787,8 +787,8 @@ $(DIR_O)/LexJulia.obj: \
 	../lexlib/LexAccessor.h \
 	../lexlib/Accessor.h \
 	../lexlib/StyleContext.h \
-	../lexlib/CharacterSet.h \
-	../lexlib/CharacterCategory.h \
+	../lexlib/LexCharacterSet.h \
+	../lexlib/LexCharacterCategory.h \
 	../lexlib/LexerModule.h \
 	../lexlib/OptionSet.h \
 	../lexlib/DefaultLexer.h
@@ -802,7 +802,7 @@ $(DIR_O)/LexKix.obj: \
 	../lexlib/LexAccessor.h \
 	../lexlib/Accessor.h \
 	../lexlib/StyleContext.h \
-	../lexlib/CharacterSet.h \
+	../lexlib/LexCharacterSet.h \
 	../lexlib/LexerModule.h
 $(DIR_O)/LexKVIrc.obj: \
 	../lexers/LexKVIrc.cxx \
@@ -814,7 +814,7 @@ $(DIR_O)/LexKVIrc.obj: \
 	../lexlib/LexAccessor.h \
 	../lexlib/Accessor.h \
 	../lexlib/StyleContext.h \
-	../lexlib/CharacterSet.h \
+	../lexlib/LexCharacterSet.h \
 	../lexlib/LexerModule.h
 $(DIR_O)/LexLaTeX.obj: \
 	../lexers/LexLaTeX.cxx \
@@ -827,7 +827,7 @@ $(DIR_O)/LexLaTeX.obj: \
 	../lexlib/LexAccessor.h \
 	../lexlib/Accessor.h \
 	../lexlib/StyleContext.h \
-	../lexlib/CharacterSet.h \
+	../lexlib/LexCharacterSet.h \
 	../lexlib/LexerModule.h \
 	../lexlib/DefaultLexer.h \
 	../lexlib/LexerBase.h
@@ -841,7 +841,7 @@ $(DIR_O)/LexLisp.obj: \
 	../lexlib/LexAccessor.h \
 	../lexlib/Accessor.h \
 	../lexlib/StyleContext.h \
-	../lexlib/CharacterSet.h \
+	../lexlib/LexCharacterSet.h \
 	../lexlib/LexerModule.h
 $(DIR_O)/LexLout.obj: \
 	../lexers/LexLout.cxx \
@@ -853,7 +853,7 @@ $(DIR_O)/LexLout.obj: \
 	../lexlib/LexAccessor.h \
 	../lexlib/Accessor.h \
 	../lexlib/StyleContext.h \
-	../lexlib/CharacterSet.h \
+	../lexlib/LexCharacterSet.h \
 	../lexlib/LexerModule.h
 $(DIR_O)/LexLua.obj: \
 	../lexers/LexLua.cxx \
@@ -865,7 +865,7 @@ $(DIR_O)/LexLua.obj: \
 	../lexlib/LexAccessor.h \
 	../lexlib/Accessor.h \
 	../lexlib/StyleContext.h \
-	../lexlib/CharacterSet.h \
+	../lexlib/LexCharacterSet.h \
 	../lexlib/LexerModule.h \
 	../lexlib/OptionSet.h \
 	../lexlib/DefaultLexer.h
@@ -879,7 +879,7 @@ $(DIR_O)/LexMagik.obj: \
 	../lexlib/LexAccessor.h \
 	../lexlib/Accessor.h \
 	../lexlib/StyleContext.h \
-	../lexlib/CharacterSet.h \
+	../lexlib/LexCharacterSet.h \
 	../lexlib/LexerModule.h
 $(DIR_O)/LexMake.obj: \
 	../lexers/LexMake.cxx \
@@ -891,7 +891,7 @@ $(DIR_O)/LexMake.obj: \
 	../lexlib/LexAccessor.h \
 	../lexlib/Accessor.h \
 	../lexlib/StyleContext.h \
-	../lexlib/CharacterSet.h \
+	../lexlib/LexCharacterSet.h \
 	../lexlib/LexerModule.h
 $(DIR_O)/LexMarkdown.obj: \
 	../lexers/LexMarkdown.cxx \
@@ -903,7 +903,7 @@ $(DIR_O)/LexMarkdown.obj: \
 	../lexlib/LexAccessor.h \
 	../lexlib/Accessor.h \
 	../lexlib/StyleContext.h \
-	../lexlib/CharacterSet.h \
+	../lexlib/LexCharacterSet.h \
 	../lexlib/LexerModule.h
 $(DIR_O)/LexMatlab.obj: \
 	../lexers/LexMatlab.cxx \
@@ -915,7 +915,7 @@ $(DIR_O)/LexMatlab.obj: \
 	../lexlib/LexAccessor.h \
 	../lexlib/Accessor.h \
 	../lexlib/StyleContext.h \
-	../lexlib/CharacterSet.h \
+	../lexlib/LexCharacterSet.h \
 	../lexlib/LexerModule.h
 $(DIR_O)/LexMaxima.obj: \
 	../lexers/LexMaxima.cxx \
@@ -927,7 +927,7 @@ $(DIR_O)/LexMaxima.obj: \
 	../lexlib/LexAccessor.h \
 	../lexlib/Accessor.h \
 	../lexlib/StyleContext.h \
-	../lexlib/CharacterSet.h \
+	../lexlib/LexCharacterSet.h \
 	../lexlib/LexerModule.h
 $(DIR_O)/LexMetapost.obj: \
 	../lexers/LexMetapost.cxx \
@@ -939,7 +939,7 @@ $(DIR_O)/LexMetapost.obj: \
 	../lexlib/LexAccessor.h \
 	../lexlib/Accessor.h \
 	../lexlib/StyleContext.h \
-	../lexlib/CharacterSet.h \
+	../lexlib/LexCharacterSet.h \
 	../lexlib/LexerModule.h
 $(DIR_O)/LexMMIXAL.obj: \
 	../lexers/LexMMIXAL.cxx \
@@ -951,7 +951,7 @@ $(DIR_O)/LexMMIXAL.obj: \
 	../lexlib/LexAccessor.h \
 	../lexlib/Accessor.h \
 	../lexlib/StyleContext.h \
-	../lexlib/CharacterSet.h \
+	../lexlib/LexCharacterSet.h \
 	../lexlib/LexerModule.h
 $(DIR_O)/LexModula.obj: \
 	../lexers/LexModula.cxx \
@@ -964,7 +964,7 @@ $(DIR_O)/LexModula.obj: \
 	../lexlib/LexAccessor.h \
 	../lexlib/Accessor.h \
 	../lexlib/StyleContext.h \
-	../lexlib/CharacterSet.h \
+	../lexlib/LexCharacterSet.h \
 	../lexlib/LexerModule.h
 $(DIR_O)/LexMPT.obj: \
 	../lexers/LexMPT.cxx \
@@ -976,7 +976,7 @@ $(DIR_O)/LexMPT.obj: \
 	../lexlib/LexAccessor.h \
 	../lexlib/Accessor.h \
 	../lexlib/StyleContext.h \
-	../lexlib/CharacterSet.h \
+	../lexlib/LexCharacterSet.h \
 	../lexlib/LexerModule.h
 $(DIR_O)/LexMSSQL.obj: \
 	../lexers/LexMSSQL.cxx \
@@ -988,7 +988,7 @@ $(DIR_O)/LexMSSQL.obj: \
 	../lexlib/LexAccessor.h \
 	../lexlib/Accessor.h \
 	../lexlib/StyleContext.h \
-	../lexlib/CharacterSet.h \
+	../lexlib/LexCharacterSet.h \
 	../lexlib/LexerModule.h
 $(DIR_O)/LexMySQL.obj: \
 	../lexers/LexMySQL.cxx \
@@ -1000,7 +1000,7 @@ $(DIR_O)/LexMySQL.obj: \
 	../lexlib/LexAccessor.h \
 	../lexlib/Accessor.h \
 	../lexlib/StyleContext.h \
-	../lexlib/CharacterSet.h \
+	../lexlib/LexCharacterSet.h \
 	../lexlib/LexerModule.h
 $(DIR_O)/LexNim.obj: \
 	../lexers/LexNim.cxx \
@@ -1013,7 +1013,7 @@ $(DIR_O)/LexNim.obj: \
 	../lexlib/LexAccessor.h \
 	../lexlib/Accessor.h \
 	../lexlib/StyleContext.h \
-	../lexlib/CharacterSet.h \
+	../lexlib/LexCharacterSet.h \
 	../lexlib/LexerModule.h \
 	../lexlib/OptionSet.h \
 	../lexlib/DefaultLexer.h
@@ -1027,7 +1027,7 @@ $(DIR_O)/LexNimrod.obj: \
 	../lexlib/LexAccessor.h \
 	../lexlib/Accessor.h \
 	../lexlib/StyleContext.h \
-	../lexlib/CharacterSet.h \
+	../lexlib/LexCharacterSet.h \
 	../lexlib/LexerModule.h
 $(DIR_O)/LexNsis.obj: \
 	../lexers/LexNsis.cxx \
@@ -1039,7 +1039,7 @@ $(DIR_O)/LexNsis.obj: \
 	../lexlib/LexAccessor.h \
 	../lexlib/Accessor.h \
 	../lexlib/StyleContext.h \
-	../lexlib/CharacterSet.h \
+	../lexlib/LexCharacterSet.h \
 	../lexlib/LexerModule.h
 $(DIR_O)/LexNull.obj: \
 	../lexers/LexNull.cxx \
@@ -1051,7 +1051,7 @@ $(DIR_O)/LexNull.obj: \
 	../lexlib/LexAccessor.h \
 	../lexlib/Accessor.h \
 	../lexlib/StyleContext.h \
-	../lexlib/CharacterSet.h \
+	../lexlib/LexCharacterSet.h \
 	../lexlib/LexerModule.h
 $(DIR_O)/LexOpal.obj: \
 	../lexers/LexOpal.cxx \
@@ -1063,7 +1063,7 @@ $(DIR_O)/LexOpal.obj: \
 	../lexlib/LexAccessor.h \
 	../lexlib/Accessor.h \
 	../lexlib/StyleContext.h \
-	../lexlib/CharacterSet.h \
+	../lexlib/LexCharacterSet.h \
 	../lexlib/LexerModule.h
 $(DIR_O)/LexOScript.obj: \
 	../lexers/LexOScript.cxx \
@@ -1075,7 +1075,7 @@ $(DIR_O)/LexOScript.obj: \
 	../lexlib/LexAccessor.h \
 	../lexlib/Accessor.h \
 	../lexlib/StyleContext.h \
-	../lexlib/CharacterSet.h \
+	../lexlib/LexCharacterSet.h \
 	../lexlib/LexerModule.h
 $(DIR_O)/LexPascal.obj: \
 	../lexers/LexPascal.cxx \
@@ -1087,7 +1087,7 @@ $(DIR_O)/LexPascal.obj: \
 	../lexlib/LexAccessor.h \
 	../lexlib/Accessor.h \
 	../lexlib/StyleContext.h \
-	../lexlib/CharacterSet.h \
+	../lexlib/LexCharacterSet.h \
 	../lexlib/LexerModule.h
 $(DIR_O)/LexPB.obj: \
 	../lexers/LexPB.cxx \
@@ -1099,7 +1099,7 @@ $(DIR_O)/LexPB.obj: \
 	../lexlib/LexAccessor.h \
 	../lexlib/Accessor.h \
 	../lexlib/StyleContext.h \
-	../lexlib/CharacterSet.h \
+	../lexlib/LexCharacterSet.h \
 	../lexlib/LexerModule.h
 $(DIR_O)/LexPerl.obj: \
 	../lexers/LexPerl.cxx \
@@ -1110,7 +1110,7 @@ $(DIR_O)/LexPerl.obj: \
 	../lexlib/WordList.h \
 	../lexlib/LexAccessor.h \
 	../lexlib/StyleContext.h \
-	../lexlib/CharacterSet.h \
+	../lexlib/LexCharacterSet.h \
 	../lexlib/LexerModule.h \
 	../lexlib/OptionSet.h \
 	../lexlib/DefaultLexer.h
@@ -1124,7 +1124,7 @@ $(DIR_O)/LexPLM.obj: \
 	../lexlib/LexAccessor.h \
 	../lexlib/Accessor.h \
 	../lexlib/StyleContext.h \
-	../lexlib/CharacterSet.h \
+	../lexlib/LexCharacterSet.h \
 	../lexlib/LexerModule.h
 $(DIR_O)/LexPO.obj: \
 	../lexers/LexPO.cxx \
@@ -1136,7 +1136,7 @@ $(DIR_O)/LexPO.obj: \
 	../lexlib/LexAccessor.h \
 	../lexlib/Accessor.h \
 	../lexlib/StyleContext.h \
-	../lexlib/CharacterSet.h \
+	../lexlib/LexCharacterSet.h \
 	../lexlib/LexerModule.h
 $(DIR_O)/LexPOV.obj: \
 	../lexers/LexPOV.cxx \
@@ -1148,7 +1148,7 @@ $(DIR_O)/LexPOV.obj: \
 	../lexlib/LexAccessor.h \
 	../lexlib/Accessor.h \
 	../lexlib/StyleContext.h \
-	../lexlib/CharacterSet.h \
+	../lexlib/LexCharacterSet.h \
 	../lexlib/LexerModule.h
 $(DIR_O)/LexPowerPro.obj: \
 	../lexers/LexPowerPro.cxx \
@@ -1160,7 +1160,7 @@ $(DIR_O)/LexPowerPro.obj: \
 	../lexlib/LexAccessor.h \
 	../lexlib/Accessor.h \
 	../lexlib/StyleContext.h \
-	../lexlib/CharacterSet.h \
+	../lexlib/LexCharacterSet.h \
 	../lexlib/LexerModule.h
 $(DIR_O)/LexPowerShell.obj: \
 	../lexers/LexPowerShell.cxx \
@@ -1172,7 +1172,7 @@ $(DIR_O)/LexPowerShell.obj: \
 	../lexlib/LexAccessor.h \
 	../lexlib/Accessor.h \
 	../lexlib/StyleContext.h \
-	../lexlib/CharacterSet.h \
+	../lexlib/LexCharacterSet.h \
 	../lexlib/LexerModule.h
 $(DIR_O)/LexProgress.obj: \
 	../lexers/LexProgress.cxx \
@@ -1183,7 +1183,7 @@ $(DIR_O)/LexProgress.obj: \
 	../lexlib/WordList.h \
 	../lexlib/LexAccessor.h \
 	../lexlib/StyleContext.h \
-	../lexlib/CharacterSet.h \
+	../lexlib/LexCharacterSet.h \
 	../lexlib/LexerModule.h \
 	../lexlib/OptionSet.h \
 	../lexlib/SparseState.h \
@@ -1198,7 +1198,7 @@ $(DIR_O)/LexProps.obj: \
 	../lexlib/LexAccessor.h \
 	../lexlib/Accessor.h \
 	../lexlib/StyleContext.h \
-	../lexlib/CharacterSet.h \
+	../lexlib/LexCharacterSet.h \
 	../lexlib/LexerModule.h
 $(DIR_O)/LexPS.obj: \
 	../lexers/LexPS.cxx \
@@ -1210,7 +1210,7 @@ $(DIR_O)/LexPS.obj: \
 	../lexlib/LexAccessor.h \
 	../lexlib/Accessor.h \
 	../lexlib/StyleContext.h \
-	../lexlib/CharacterSet.h \
+	../lexlib/LexCharacterSet.h \
 	../lexlib/LexerModule.h
 $(DIR_O)/LexPython.obj: \
 	../lexers/LexPython.cxx \
@@ -1222,8 +1222,8 @@ $(DIR_O)/LexPython.obj: \
 	../lexlib/LexAccessor.h \
 	../lexlib/Accessor.h \
 	../lexlib/StyleContext.h \
-	../lexlib/CharacterSet.h \
-	../lexlib/CharacterCategory.h \
+	../lexlib/LexCharacterSet.h \
+	../lexlib/LexCharacterCategory.h \
 	../lexlib/LexerModule.h \
 	../lexlib/OptionSet.h \
 	../lexlib/SubStyles.h \
@@ -1238,7 +1238,7 @@ $(DIR_O)/LexR.obj: \
 	../lexlib/LexAccessor.h \
 	../lexlib/Accessor.h \
 	../lexlib/StyleContext.h \
-	../lexlib/CharacterSet.h \
+	../lexlib/LexCharacterSet.h \
 	../lexlib/LexerModule.h
 $(DIR_O)/LexRaku.obj: \
 	../lexers/LexRaku.cxx \
@@ -1249,8 +1249,8 @@ $(DIR_O)/LexRaku.obj: \
 	../lexlib/WordList.h \
 	../lexlib/LexAccessor.h \
 	../lexlib/StyleContext.h \
-	../lexlib/CharacterSet.h \
-	../lexlib/CharacterCategory.h \
+	../lexlib/LexCharacterSet.h \
+	../lexlib/LexCharacterCategory.h \
 	../lexlib/LexerModule.h \
 	../lexlib/OptionSet.h \
 	../lexlib/DefaultLexer.h
@@ -1264,7 +1264,7 @@ $(DIR_O)/LexRebol.obj: \
 	../lexlib/LexAccessor.h \
 	../lexlib/Accessor.h \
 	../lexlib/StyleContext.h \
-	../lexlib/CharacterSet.h \
+	../lexlib/LexCharacterSet.h \
 	../lexlib/LexerModule.h
 $(DIR_O)/LexRegistry.obj: \
 	../lexers/LexRegistry.cxx \
@@ -1275,7 +1275,7 @@ $(DIR_O)/LexRegistry.obj: \
 	../lexlib/WordList.h \
 	../lexlib/LexAccessor.h \
 	../lexlib/StyleContext.h \
-	../lexlib/CharacterSet.h \
+	../lexlib/LexCharacterSet.h \
 	../lexlib/LexerModule.h \
 	../lexlib/OptionSet.h \
 	../lexlib/DefaultLexer.h
@@ -1289,7 +1289,7 @@ $(DIR_O)/LexRuby.obj: \
 	../lexlib/LexAccessor.h \
 	../lexlib/Accessor.h \
 	../lexlib/StyleContext.h \
-	../lexlib/CharacterSet.h \
+	../lexlib/LexCharacterSet.h \
 	../lexlib/LexerModule.h
 $(DIR_O)/LexRust.obj: \
 	../lexers/LexRust.cxx \
@@ -1302,7 +1302,7 @@ $(DIR_O)/LexRust.obj: \
 	../lexlib/LexAccessor.h \
 	../lexlib/Accessor.h \
 	../lexlib/StyleContext.h \
-	../lexlib/CharacterSet.h \
+	../lexlib/LexCharacterSet.h \
 	../lexlib/LexerModule.h \
 	../lexlib/OptionSet.h \
 	../lexlib/DefaultLexer.h
@@ -1316,7 +1316,7 @@ $(DIR_O)/LexSAS.obj: \
 	../lexlib/LexAccessor.h \
 	../lexlib/Accessor.h \
 	../lexlib/StyleContext.h \
-	../lexlib/CharacterSet.h \
+	../lexlib/LexCharacterSet.h \
 	../lexlib/LexerModule.h
 $(DIR_O)/LexScriptol.obj: \
 	../lexers/LexScriptol.cxx \
@@ -1328,7 +1328,7 @@ $(DIR_O)/LexScriptol.obj: \
 	../lexlib/LexAccessor.h \
 	../lexlib/Accessor.h \
 	../lexlib/StyleContext.h \
-	../lexlib/CharacterSet.h \
+	../lexlib/LexCharacterSet.h \
 	../lexlib/LexerModule.h
 $(DIR_O)/LexSmalltalk.obj: \
 	../lexers/LexSmalltalk.cxx \
@@ -1340,7 +1340,7 @@ $(DIR_O)/LexSmalltalk.obj: \
 	../lexlib/LexAccessor.h \
 	../lexlib/Accessor.h \
 	../lexlib/StyleContext.h \
-	../lexlib/CharacterSet.h \
+	../lexlib/LexCharacterSet.h \
 	../lexlib/LexerModule.h
 $(DIR_O)/LexSML.obj: \
 	../lexers/LexSML.cxx \
@@ -1352,7 +1352,7 @@ $(DIR_O)/LexSML.obj: \
 	../lexlib/LexAccessor.h \
 	../lexlib/Accessor.h \
 	../lexlib/StyleContext.h \
-	../lexlib/CharacterSet.h \
+	../lexlib/LexCharacterSet.h \
 	../lexlib/LexerModule.h
 $(DIR_O)/LexSorcus.obj: \
 	../lexers/LexSorcus.cxx \
@@ -1364,7 +1364,7 @@ $(DIR_O)/LexSorcus.obj: \
 	../lexlib/LexAccessor.h \
 	../lexlib/Accessor.h \
 	../lexlib/StyleContext.h \
-	../lexlib/CharacterSet.h \
+	../lexlib/LexCharacterSet.h \
 	../lexlib/LexerModule.h
 $(DIR_O)/LexSpecman.obj: \
 	../lexers/LexSpecman.cxx \
@@ -1376,7 +1376,7 @@ $(DIR_O)/LexSpecman.obj: \
 	../lexlib/LexAccessor.h \
 	../lexlib/Accessor.h \
 	../lexlib/StyleContext.h \
-	../lexlib/CharacterSet.h \
+	../lexlib/LexCharacterSet.h \
 	../lexlib/LexerModule.h
 $(DIR_O)/LexSpice.obj: \
 	../lexers/LexSpice.cxx \
@@ -1388,7 +1388,7 @@ $(DIR_O)/LexSpice.obj: \
 	../lexlib/LexAccessor.h \
 	../lexlib/Accessor.h \
 	../lexlib/StyleContext.h \
-	../lexlib/CharacterSet.h \
+	../lexlib/LexCharacterSet.h \
 	../lexlib/LexerModule.h
 $(DIR_O)/LexSQL.obj: \
 	../lexers/LexSQL.cxx \
@@ -1400,7 +1400,7 @@ $(DIR_O)/LexSQL.obj: \
 	../lexlib/LexAccessor.h \
 	../lexlib/Accessor.h \
 	../lexlib/StyleContext.h \
-	../lexlib/CharacterSet.h \
+	../lexlib/LexCharacterSet.h \
 	../lexlib/LexerModule.h \
 	../lexlib/OptionSet.h \
 	../lexlib/SparseState.h \
@@ -1415,7 +1415,7 @@ $(DIR_O)/LexStata.obj: \
 	../lexlib/LexAccessor.h \
 	../lexlib/Accessor.h \
 	../lexlib/StyleContext.h \
-	../lexlib/CharacterSet.h \
+	../lexlib/LexCharacterSet.h \
 	../lexlib/LexerModule.h
 $(DIR_O)/LexSTTXT.obj: \
 	../lexers/LexSTTXT.cxx \
@@ -1427,7 +1427,7 @@ $(DIR_O)/LexSTTXT.obj: \
 	../lexlib/LexAccessor.h \
 	../lexlib/Accessor.h \
 	../lexlib/StyleContext.h \
-	../lexlib/CharacterSet.h \
+	../lexlib/LexCharacterSet.h \
 	../lexlib/LexerModule.h
 $(DIR_O)/LexTACL.obj: \
 	../lexers/LexTACL.cxx \
@@ -1439,7 +1439,7 @@ $(DIR_O)/LexTACL.obj: \
 	../lexlib/LexAccessor.h \
 	../lexlib/Accessor.h \
 	../lexlib/StyleContext.h \
-	../lexlib/CharacterSet.h \
+	../lexlib/LexCharacterSet.h \
 	../lexlib/LexerModule.h
 $(DIR_O)/LexTADS3.obj: \
 	../lexers/LexTADS3.cxx \
@@ -1451,7 +1451,7 @@ $(DIR_O)/LexTADS3.obj: \
 	../lexlib/LexAccessor.h \
 	../lexlib/Accessor.h \
 	../lexlib/StyleContext.h \
-	../lexlib/CharacterSet.h \
+	../lexlib/LexCharacterSet.h \
 	../lexlib/LexerModule.h
 $(DIR_O)/LexTAL.obj: \
 	../lexers/LexTAL.cxx \
@@ -1463,7 +1463,7 @@ $(DIR_O)/LexTAL.obj: \
 	../lexlib/LexAccessor.h \
 	../lexlib/Accessor.h \
 	../lexlib/StyleContext.h \
-	../lexlib/CharacterSet.h \
+	../lexlib/LexCharacterSet.h \
 	../lexlib/LexerModule.h
 $(DIR_O)/LexTCL.obj: \
 	../lexers/LexTCL.cxx \
@@ -1475,7 +1475,7 @@ $(DIR_O)/LexTCL.obj: \
 	../lexlib/LexAccessor.h \
 	../lexlib/Accessor.h \
 	../lexlib/StyleContext.h \
-	../lexlib/CharacterSet.h \
+	../lexlib/LexCharacterSet.h \
 	../lexlib/LexerModule.h
 $(DIR_O)/LexTCMD.obj: \
 	../lexers/LexTCMD.cxx \
@@ -1487,7 +1487,7 @@ $(DIR_O)/LexTCMD.obj: \
 	../lexlib/LexAccessor.h \
 	../lexlib/Accessor.h \
 	../lexlib/StyleContext.h \
-	../lexlib/CharacterSet.h \
+	../lexlib/LexCharacterSet.h \
 	../lexlib/LexerModule.h
 $(DIR_O)/LexTeX.obj: \
 	../lexers/LexTeX.cxx \
@@ -1499,7 +1499,7 @@ $(DIR_O)/LexTeX.obj: \
 	../lexlib/LexAccessor.h \
 	../lexlib/Accessor.h \
 	../lexlib/StyleContext.h \
-	../lexlib/CharacterSet.h \
+	../lexlib/LexCharacterSet.h \
 	../lexlib/LexerModule.h
 $(DIR_O)/LexTxt2tags.obj: \
 	../lexers/LexTxt2tags.cxx \
@@ -1511,7 +1511,7 @@ $(DIR_O)/LexTxt2tags.obj: \
 	../lexlib/LexAccessor.h \
 	../lexlib/Accessor.h \
 	../lexlib/StyleContext.h \
-	../lexlib/CharacterSet.h \
+	../lexlib/LexCharacterSet.h \
 	../lexlib/LexerModule.h
 $(DIR_O)/LexVB.obj: \
 	../lexers/LexVB.cxx \
@@ -1523,7 +1523,7 @@ $(DIR_O)/LexVB.obj: \
 	../lexlib/LexAccessor.h \
 	../lexlib/Accessor.h \
 	../lexlib/StyleContext.h \
-	../lexlib/CharacterSet.h \
+	../lexlib/LexCharacterSet.h \
 	../lexlib/LexerModule.h
 $(DIR_O)/LexVerilog.obj: \
 	../lexers/LexVerilog.cxx \
@@ -1535,7 +1535,7 @@ $(DIR_O)/LexVerilog.obj: \
 	../lexlib/LexAccessor.h \
 	../lexlib/Accessor.h \
 	../lexlib/StyleContext.h \
-	../lexlib/CharacterSet.h \
+	../lexlib/LexCharacterSet.h \
 	../lexlib/LexerModule.h \
 	../lexlib/OptionSet.h \
 	../lexlib/SubStyles.h \
@@ -1550,7 +1550,7 @@ $(DIR_O)/LexVHDL.obj: \
 	../lexlib/LexAccessor.h \
 	../lexlib/Accessor.h \
 	../lexlib/StyleContext.h \
-	../lexlib/CharacterSet.h \
+	../lexlib/LexCharacterSet.h \
 	../lexlib/LexerModule.h
 $(DIR_O)/LexVisualProlog.obj: \
 	../lexers/LexVisualProlog.cxx \
@@ -1562,8 +1562,8 @@ $(DIR_O)/LexVisualProlog.obj: \
 	../lexlib/LexAccessor.h \
 	../lexlib/Accessor.h \
 	../lexlib/StyleContext.h \
-	../lexlib/CharacterSet.h \
-	../lexlib/CharacterCategory.h \
+	../lexlib/LexCharacterSet.h \
+	../lexlib/LexCharacterCategory.h \
 	../lexlib/LexerModule.h \
 	../lexlib/OptionSet.h \
 	../lexlib/DefaultLexer.h
@@ -1585,5 +1585,5 @@ $(DIR_O)/LexYAML.obj: \
 	../lexlib/LexAccessor.h \
 	../lexlib/Accessor.h \
 	../lexlib/StyleContext.h \
-	../lexlib/CharacterSet.h \
+	../lexlib/LexCharacterSet.h \
 	../lexlib/LexerModule.h

@@ -13,7 +13,7 @@ TESTSRC=test*.cxx
 # Files being tested from scintilla/src directory
 TESTEDSRC=\
  ../../lexlib/Accessor.cxx \
- ../../lexlib/CharacterSet.cxx \
+ ../../lexlib/LexCharacterSet.cxx \
  ../../lexlib/InList.cxx \
  ../../lexlib/LexerBase.cxx \
  ../../lexlib/LexerModule.cxx \

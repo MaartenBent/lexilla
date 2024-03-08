@@ -53,7 +53,7 @@ TESTOBJ=$(TESTSRC:.cxx=.o)
 # Files being tested from lexilla/lexlib directory
 TESTEDOBJ=\
  Accessor.o \
- CharacterSet.o \
+ LexCharacterSet.o \
  InList.o \
  LexerBase.o \
  LexerModule.o \
