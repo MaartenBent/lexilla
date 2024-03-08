@@ -107,7 +107,7 @@ class LexerLua : public DefaultLexer {
 	OptionSetLua osLua;
 public:
 	explicit LexerLua() :
-		DefaultLexer("lua", SCLEX_LUA, lexicalClasses, std::size(lexicalClasses)) {
+		DefaultLexer("lua", SCLEX_LUA, lexicalClasses, Sci::size(lexicalClasses)) {
 	}
 	~LexerLua() override = default;
 	void SCI_METHOD Release() noexcept override {

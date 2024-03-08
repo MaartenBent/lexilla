@@ -78,10 +78,10 @@ using CharacterSet = CharacterSetArray<0x80>;
 
 template <typename T, typename... Args>
 bool AnyOf(T t, Args... args) noexcept {
-#if defined(__clang__)
-	static_assert(__is_integral(T) || __is_enum(T), "__is_integral(T) || __is_enum(T)");
-#endif
 #if wxCHECK_CXX_STD(201703L)
+#if defined(__clang__)
+	static_assert(__is_integral(T) || __is_enum(T));
+#endif
 	return ((t == args) || ...);
 #else
 	std::vector<T> v = { args... };

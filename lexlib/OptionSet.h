@@ -10,6 +10,8 @@
 #ifndef OPTIONSET_H
 #define OPTIONSET_H
 
+#include "LexillaCompat.h"
+
 namespace Lexilla {
 
 template <typename T>
@@ -99,9 +101,13 @@ public:
 	}
 	template <typename E>
 	void DefineProperty(const char *name, E T::*pe, std::string const& description="") {
+#if wxCHECK_CXX_STD(201703L)
 		static_assert(std::is_enum<E>::value);
+#endif
 		plcoi pi {};
+#if wxCHECK_CXX_STD(201703L)
 		static_assert(sizeof(pe) == sizeof(pi));
+#endif
 		memcpy(&pi, &pe, sizeof(pe));
 		nameToDef[name] = Option(pi, description);
 		AppendName(name);
