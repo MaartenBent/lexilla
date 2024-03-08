@@ -10,7 +10,6 @@
 #include <cctype>
 
 #include <string>
-#include <string_view>
 
 #include "ILexer.h"
 #include "Scintilla.h"
@@ -35,7 +34,7 @@ inline bool IsAWordStart(int ch) noexcept {
 	return (ch < 0x80) && (isalnum(ch) || ch == '_');
 }
 
-constexpr bool IsAnOperator(int ch) noexcept {
+inline bool IsAnOperator(int ch) noexcept {
 	// '.' left out as it is used to make up numbers
 	if (ch == '-' || ch == '+' || ch == '!' || ch == '~' ||
 	        ch == '?' || ch == ':' || ch == '*' || ch == '/' ||

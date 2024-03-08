@@ -30,13 +30,13 @@ class OptionSet {
 		Option() :
 			opType(SC_TYPE_BOOLEAN), pb(nullptr) {
 		}
-		Option(plcob pb_, std::string_view description_="") :
+		Option(plcob pb_, std::string const& description_="") :
 			opType(SC_TYPE_BOOLEAN), pb(pb_), description(description_) {
 		}
-		Option(plcoi pi_, std::string_view description_) :
+		Option(plcoi pi_, std::string const& description_) :
 			opType(SC_TYPE_INTEGER), pi(pi_), description(description_) {
 		}
-		Option(plcos ps_, std::string_view description_) :
+		Option(plcos ps_, std::string const& description_) :
 			opType(SC_TYPE_STRING), ps(ps_), description(description_) {
 		}
 		bool Set(T *base, const char *val) {
@@ -74,7 +74,7 @@ class OptionSet {
 			return value.c_str();
 		}
 	};
-	typedef std::map<std::string, Option, std::less<>> OptionMap;
+	typedef std::map<std::string, Option, std::less<std::string>> OptionMap;
 	OptionMap nameToDef;
 	std::string names;
 	std::string wordLists;
@@ -85,20 +85,20 @@ class OptionSet {
 		names += name;
 	}
 public:
-	void DefineProperty(const char *name, plcob pb, std::string_view description="") {
+	void DefineProperty(const char *name, plcob pb, std::string const& description="") {
 		nameToDef[name] = Option(pb, description);
 		AppendName(name);
 	}
-	void DefineProperty(const char *name, plcoi pi, std::string_view description="") {
+	void DefineProperty(const char *name, plcoi pi, std::string const& description="") {
 		nameToDef[name] = Option(pi, description);
 		AppendName(name);
 	}
-	void DefineProperty(const char *name, plcos ps, std::string_view description="") {
+	void DefineProperty(const char *name, plcos ps, std::string const& description="") {
 		nameToDef[name] = Option(ps, description);
 		AppendName(name);
 	}
 	template <typename E>
-	void DefineProperty(const char *name, E T::*pe, std::string_view description="") {
+	void DefineProperty(const char *name, E T::*pe, std::string const& description="") {
 		static_assert(std::is_enum<E>::value);
 		plcoi pi {};
 		static_assert(sizeof(pe) == sizeof(pi));

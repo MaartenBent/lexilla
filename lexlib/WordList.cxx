@@ -16,6 +16,8 @@
 
 #include "WordList.h"
 
+#include "LexillaCompat.h"
+
 using namespace Lexilla;
 
 namespace {
@@ -43,7 +45,7 @@ std::unique_ptr<char *[]> ArrayFromWordList(char *wordlist, size_t slen, size_t 
 			words++;
 		prev = curr;
 	}
-	std::unique_ptr<char *[]> keywords = std::make_unique<char *[]>(words + 1);
+	std::unique_ptr<char *[]> keywords = Sci::make_unique<char *[]>(words + 1);
 	size_t wordsStore = 0;
 	if (words) {
 		unsigned char previous = '\0';
@@ -109,7 +111,7 @@ void WordList::Clear() noexcept {
 
 bool WordList::Set(const char *s) {
 	const size_t lenS = strlen(s) + 1;
-	std::unique_ptr<char[]> listTemp = std::make_unique<char[]>(lenS);
+	std::unique_ptr<char[]> listTemp = Sci::make_unique<char[]>(lenS);
 	memcpy(listTemp.get(), s, lenS);
 	size_t lenTemp = 0;
 	std::unique_ptr<char *[]> wordsTemp = ArrayFromWordList(listTemp.get(), lenS - 1, &lenTemp, onlyLineEnds);

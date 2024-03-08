@@ -12,7 +12,6 @@
 #include <cstdarg>
 
 #include <string>
-#include <string_view>
 #include <initializer_list>
 
 #include "ILexer.h"
@@ -61,18 +60,18 @@ bool IsGccExcerpt(const char *s) noexcept {
 	return true;
 }
 
-const std::string_view bashDiagnosticMark = ": line ";
-bool IsBashDiagnostic(std::string_view sv) {
+const std::string bashDiagnosticMark = ": line ";
+bool IsBashDiagnostic(std::string const& sv) {
 	const size_t mark = sv.find(bashDiagnosticMark);
-	if (mark == std::string_view::npos) {
+	if (mark == std::string::npos) {
 		return false;
 	}
-	std::string_view rest = sv.substr(mark + bashDiagnosticMark.length());
+	std::string rest = sv.substr(mark + bashDiagnosticMark.length());
 	if (rest.empty() || !Is0To9(rest.front())) {
 		return false;
 	}
 	while (!rest.empty() && Is0To9(rest.front())) {
-		rest.remove_prefix(1);
+		rest = rest.substr(1);
 	}
 	return !rest.empty() && (rest.front() == ':');
 }

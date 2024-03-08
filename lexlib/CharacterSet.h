@@ -8,6 +8,11 @@
 #ifndef CHARACTERSET_H
 #define CHARACTERSET_H
 
+#include <vector>
+#include <algorithm>
+
+#include "LexillaCompat.h"
+
 namespace Lexilla {
 
 template<int N>
@@ -37,9 +42,10 @@ public:
 		CharacterSetArray(setNone, initialSet, valueAfter_) {
 	}
 	// For compatibility with previous version but should not be used in new code.
-	CharacterSetArray(setBase base, const char *initialSet, [[maybe_unused]]int size_, bool valueAfter_=false) noexcept :
+	CharacterSetArray(setBase base, const char *initialSet, int size_, bool valueAfter_=false) noexcept :
 		CharacterSetArray(base, initialSet, valueAfter_) {
 		assert(size_ == N);
+		(void)size_;
 	}
 	void Add(int val) noexcept {
 		assert(val >= 0);
@@ -71,18 +77,23 @@ using CharacterSet = CharacterSetArray<0x80>;
 // Functions for classifying characters
 
 template <typename T, typename... Args>
-constexpr bool AnyOf(T t, Args... args) noexcept {
+bool AnyOf(T t, Args... args) noexcept {
 #if defined(__clang__)
-	static_assert(__is_integral(T) || __is_enum(T));
+	static_assert(__is_integral(T) || __is_enum(T), "__is_integral(T) || __is_enum(T)");
 #endif
+#if wxCHECK_CXX_STD(201703L)
 	return ((t == args) || ...);
+#else
+	std::vector<T> v = { args... };
+	return std::find(v.begin(), v.end(), t) != v.end();
+#endif
 }
 
 // prevent pointer without <type_traits>
 template <typename T, typename... Args>
-constexpr void AnyOf([[maybe_unused]] T *t, [[maybe_unused]] Args... args) noexcept {}
+void AnyOf(T*, Args...) noexcept {}
 template <typename T, typename... Args>
-constexpr void AnyOf([[maybe_unused]] const T *t, [[maybe_unused]] Args... args) noexcept {}
+void AnyOf(const T*, Args...) noexcept {}
 
 constexpr bool IsASpace(int ch) noexcept {
     return (ch == ' ') || ((ch >= 0x09) && (ch <= 0x0d));
@@ -187,7 +198,7 @@ inline T MakeLowerCase(T ch) noexcept {
 }
 
 int CompareCaseInsensitive(const char *a, const char *b) noexcept;
-bool EqualCaseInsensitive(std::string_view a, std::string_view b) noexcept;
+bool EqualCaseInsensitive(std::string const& a, std::string const& b) noexcept;
 int CompareNCaseInsensitive(const char *a, const char *b, size_t len) noexcept;
 
 }

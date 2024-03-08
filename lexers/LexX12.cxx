@@ -14,7 +14,6 @@
 #include <cctype>
 
 #include <string>
-#include <string_view>
 
 #include <vector>
 #include <algorithm>
@@ -22,6 +21,8 @@
 #include "ILexer.h"
 #include "Scintilla.h"
 #include "SciLexer.h"
+#include "LexillaCompat.h"
+
 #include "LexerModule.h"
 #include "DefaultLexer.h"
 
@@ -326,7 +327,7 @@ LexerX12::Terminator LexerX12::DetectSegmentHeader(IDocument *pAccess, Sci_Posit
 	Sci_PositionU Length = pAccess->Length();
 	Length -= pos;
 	char c, Buf[4] = { 0 }; // max 3 + separator
-	for (Sci_PositionU posOffset = 0; posOffset < std::size(Buf) && posOffset < Length; posOffset++)
+	for (Sci_PositionU posOffset = 0; posOffset < Sci::size(Buf) && posOffset < Length; posOffset++)
 	{
 		pAccess->GetCharRange(&c, pos + posOffset, 1);
 		if (c != m_SeparatorElement)

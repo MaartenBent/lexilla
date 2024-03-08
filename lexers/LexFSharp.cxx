@@ -11,7 +11,6 @@
 #include <cassert>
 
 #include <string>
-#include <string_view>
 #include <map>
 #include <functional>
 
@@ -164,7 +163,7 @@ public:
 				break;
 		}
 	}
-	constexpr bool AtEnd() const noexcept {
+	inline bool AtEnd() noexcept {
 		return invalid || type == Notation::none || (type != Notation::none && toEnd < 0);
 	}
 };

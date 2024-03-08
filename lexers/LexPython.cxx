@@ -10,7 +10,6 @@
 #include <cstring>
 
 #include <string>
-#include <string_view>
 #include <vector>
 #include <map>
 #include <algorithm>
@@ -77,11 +76,11 @@ constexpr bool IsPyStringTypeChar(int ch, literalsAllowed allowed) noexcept {
 		((allowed & litF) && (ch == 'f' || ch == 'F'));
 }
 
-constexpr bool IsQuote(int ch) {
+inline bool IsQuote(int ch) {
 	return AnyOf(ch, '"', '\'');
 }
 
-constexpr bool IsRawPrefix(int ch) {
+inline bool IsRawPrefix(int ch) {
 	return AnyOf(ch, 'r', 'R');
 }
 
@@ -107,15 +106,15 @@ bool IsPyStringStart(int ch, int chNext, int chNext2, literalsAllowed allowed) n
 	return false;
 }
 
-constexpr bool IsPyFStringState(int st) noexcept {
+inline bool IsPyFStringState(int st) noexcept {
 	return AnyOf(st, SCE_P_FCHARACTER, SCE_P_FSTRING, SCE_P_FTRIPLE, SCE_P_FTRIPLEDOUBLE);
 }
 
-constexpr bool IsPySingleQuoteStringState(int st) noexcept {
+inline bool IsPySingleQuoteStringState(int st) noexcept {
 	return AnyOf(st, SCE_P_CHARACTER, SCE_P_STRING, SCE_P_FCHARACTER, SCE_P_FSTRING);
 }
 
-constexpr bool IsPyTripleQuoteStringState(int st) noexcept {
+inline bool IsPyTripleQuoteStringState(int st) noexcept {
 	return AnyOf(st, SCE_P_TRIPLE, SCE_P_TRIPLEDOUBLE, SCE_P_FTRIPLE, SCE_P_FTRIPLEDOUBLE);
 }
 
@@ -239,7 +238,7 @@ bool IsFirstNonWhitespace(Sci_Position pos, Accessor &styler) {
 unsigned char GetNextNonWhitespaceChar(Accessor &styler, Sci_PositionU pos, Sci_PositionU maxPos, Sci_PositionU *charPosPtr = nullptr) {
 	while (pos < maxPos) {
 		const unsigned char ch = styler.SafeGetCharAt(pos, '\0');
-		if (!AnyOf(ch, ' ', '\t', '\n', '\r')) {
+		if (!AnyOf((char)ch, ' ', '\t', '\n', '\r')) {
 			if (charPosPtr != nullptr) {
 				*charPosPtr = pos;
 			}
@@ -301,7 +300,7 @@ struct OptionsPython {
 	int decoratorAttributes = 0;
 	bool pep701StringsF = true;
 
-	[[nodiscard]] literalsAllowed AllowedLiterals() const noexcept {
+	wxNODISCARD literalsAllowed AllowedLiterals() const noexcept {
 		literalsAllowed allowedLiterals = stringsU ? litU : litNone;
 		if (stringsB)
 			allowedLiterals = static_cast<literalsAllowed>(allowedLiterals | litB);

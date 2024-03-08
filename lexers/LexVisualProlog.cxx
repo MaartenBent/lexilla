@@ -23,7 +23,6 @@
 #endif
 
 #include <string>
-#include <string_view>
 #include <vector>
 #include <map>
 #include <algorithm>
@@ -476,13 +475,13 @@ void SCI_METHOD LexerVisualProlog::Lex(Sci_PositionU startPos, Sci_Position leng
                     sc.SetState(SCE_VISUALPROLOG_DEFAULT);
                     break;
                 }
-                [[fallthrough]];
+                wxFALLTHROUGH;
             case SCE_VISUALPROLOG_STRING_ESCAPE:
             case SCE_VISUALPROLOG_STRING_QUOTE:
             case SCE_VISUALPROLOG_STRING_EOL:
                 // return to SCE_VISUALPROLOG_STRING and treat as such (fallthrough)
                 sc.SetState(SCE_VISUALPROLOG_STRING);
-                [[fallthrough]];
+                wxFALLTHROUGH;
             case SCE_VISUALPROLOG_STRING:
                 if (sc.MatchLineEnd() | sc.atLineEnd) {
                     if (ls.verbatim) {

@@ -12,7 +12,7 @@
 #include <iterator>
 
 #include "CharacterCategory.h"
-#include "Compat.h"
+#include "LexillaCompat.h"
 
 namespace Lexilla {
 

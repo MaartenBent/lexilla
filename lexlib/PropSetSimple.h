@@ -21,9 +21,9 @@ public:
 	PropSetSimple &operator=(PropSetSimple&&) = delete;
 	virtual ~PropSetSimple();
 
-	bool Set(std::string_view key, std::string_view val);
-	const char *Get(std::string_view key) const;
-	int GetInt(std::string_view key, int defaultValue=0) const;
+	bool Set(std::string const& key, std::string const& val);
+	const char *Get(std::string const& key) const;
+	int GetInt(std::string const& key, int defaultValue=0) const;
 };
 
 }

@@ -10,7 +10,6 @@
 #include <cassert>
 
 #include <string>
-#include <string_view>
 
 #include "ILexer.h"
 
@@ -79,8 +78,8 @@ void StyleContext::GetCurrentString(std::string &string, Transform transform) {
 	const Sci_PositionU len = currentPos - styler.GetStartSegment();
 	string.resize(len);
 	if (transform == Transform::lower) {
-		styler.GetRangeLowered(startPos, currentPos, string.data(), len + 1);
+		styler.GetRangeLowered(startPos, currentPos, (char*)string.data(), len + 1);
 	} else {
-		styler.GetRange(startPos, currentPos, string.data(), len + 1);
+		styler.GetRange(startPos, currentPos, (char*)string.data(), len + 1);
 	}
 }

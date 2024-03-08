@@ -22,7 +22,7 @@ class Accessor : public LexAccessor {
 public:
 	PropSetSimple *pprops;
 	Accessor(Scintilla::IDocument *pAccess_, PropSetSimple *pprops_);
-	int GetPropertyInt(std::string_view key, int defaultValue=0) const;
+	int GetPropertyInt(std::string const& key, int defaultValue=0) const;
 	int IndentAmount(Sci_Position line, int *flags, PFNIsCommentLeader pfnIsCommentLeader = nullptr);
 };
 

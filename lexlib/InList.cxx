@@ -8,16 +8,15 @@
 #include <cassert>
 
 #include <string>
-#include <string_view>
 #include <initializer_list>
 
 #include "InList.h"
-#include "CharacterSet.h"
+#include "LexCharacterSet.h"
 
 namespace Lexilla {
 
-bool InList(std::string_view value, std::initializer_list<std::string_view> list) noexcept {
-	for (const std::string_view element : list) {
+bool InList(std::string const& value, std::initializer_list<std::string> list) noexcept {
+	for (std::string const& element : list) {
 		if (value == element) {
 			return true;
 		}
@@ -25,8 +24,8 @@ bool InList(std::string_view value, std::initializer_list<std::string_view> list
 	return false;
 }
 
-bool InListCaseInsensitive(std::string_view value, std::initializer_list<std::string_view> list) noexcept {
-	for (const std::string_view element : list) {
+bool InListCaseInsensitive(std::string const& value, std::initializer_list<std::string> list) noexcept {
+	for (std::string const& element : list) {
 		if (EqualCaseInsensitive(value, element)) {
 			return true;
 		}

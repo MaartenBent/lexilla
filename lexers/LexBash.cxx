@@ -13,7 +13,6 @@
 #include <cstdarg>
 
 #include <string>
-#include <string_view>
 #include <vector>
 #include <map>
 #include <initializer_list>
@@ -22,6 +21,7 @@
 #include "ILexer.h"
 #include "Scintilla.h"
 #include "SciLexer.h"
+#include "LexillaCompat.h"
 
 #include "StringCopy.h"
 #include "InList.h"
@@ -94,7 +94,7 @@ constexpr int MaskCommand(int state) noexcept {
 	return state & ~commandSubstitutionFlag;
 }
 
-constexpr int translateBashDigit(int ch) noexcept {
+inline int translateBashDigit(int ch) noexcept {
 	if (ch >= '0' && ch <= '9') {
 		return ch - '0';
 	} else if (ch >= 'a' && ch <= 'z') {
@@ -122,7 +122,7 @@ int getBashNumberBase(char *s) noexcept {
 	return base;
 }
 
-constexpr int opposite(int ch) noexcept {
+inline int opposite(int ch) noexcept {
 	if (ch == '(') return ')';
 	if (ch == '[') return ']';
 	if (ch == '{') return '}';
@@ -170,7 +170,7 @@ bool IsCommentLine(Sci_Position line, LexAccessor &styler) {
 	return false;
 }
 
-constexpr bool StyleForceBacktrack(int state) noexcept {
+inline bool StyleForceBacktrack(int state) noexcept {
 	return AnyOf(state, SCE_SH_CHARACTER, SCE_SH_STRING, SCE_SH_BACKTICKS, SCE_SH_HERE_Q, SCE_SH_PARAM);
 }
 
@@ -186,7 +186,7 @@ struct OptionsBash {
 	CommandSubstitution commandSubstitution = CommandSubstitution::Backtick;
 	std::string specialParameter = BASH_SPECIAL_PARAMETER;
 
-	[[nodiscard]] bool stylingInside(int state) const noexcept {
+	wxNODISCARD bool stylingInside(int state) const noexcept {
 		switch (state) {
 		case SCE_SH_STRING:
 			return stylingInsideString;
@@ -282,7 +282,7 @@ public:
 	QuoteCls Stack[BASH_QUOTE_STACK_MAX];
 	const CharacterSet &setParamStart;
 	QuoteStackCls(const CharacterSet &setParamStart_) noexcept : setParamStart{setParamStart_} {}
-	[[nodiscard]] bool Empty() const noexcept {
+	wxNODISCARD bool Empty() const noexcept {
 		return Current.Up == '\0';
 	}
 	void Start(int u, QuoteStyle s, int outer, CmdState state) noexcept {
@@ -486,7 +486,7 @@ class LexerBash final : public DefaultLexer {
 	SubStyles subStyles;
 public:
 	LexerBash() :
-		DefaultLexer("bash", SCLEX_BASH, lexicalClasses, std::size(lexicalClasses)),
+		DefaultLexer("bash", SCLEX_BASH, lexicalClasses, Sci::size(lexicalClasses)),
 		setParamStart(CharacterSet::setAlphaNum, "_" BASH_SPECIAL_PARAMETER),
 		subStyles(styleSubable, 0x80, 0x40, 0) {
 		cmdDelimiter.Set("| || |& & && ; ;; ( ) { }");
@@ -925,7 +925,7 @@ void SCI_METHOD LexerBash::Lex(Sci_PositionU startPos, Sci_Position length, int 
 					break;
 				}
 				// fall through to handle nested shell expansions
-				[[fallthrough]];
+				wxFALLTHROUGH;
 			case SCE_SH_STRING:	// delimited styles, can nest
 			case SCE_SH_PARAM: // ${parameter}
 			case SCE_SH_BACKTICKS:

@@ -15,13 +15,13 @@
 #include <ctype.h>
 
 #include <string>
-#include <string_view>
 #include <map>
 #include <functional>
 
 #include "ILexer.h"
 #include "Scintilla.h"
 #include "SciLexer.h"
+#include "LexillaCompat.h"
 
 #include "WordList.h"
 #include "LexAccessor.h"
@@ -477,7 +477,7 @@ class LexerPerl : public DefaultLexer {
 	OptionSetPerl osPerl;
 public:
 	LexerPerl() :
-		DefaultLexer("perl", SCLEX_PERL, lexicalClasses, std::size(lexicalClasses)),
+		DefaultLexer("perl", SCLEX_PERL, lexicalClasses, Sci::size(lexicalClasses)),
 		setWordStart(CharacterSet::setAlpha, "_", 0x80, true),
 		setWord(CharacterSet::setAlphaNum, "_", 0x80, true),
 		setSpecialVar(CharacterSet::setNone, "\"$;<>&`'+,./\\%:=~!?@[]"),

@@ -13,7 +13,6 @@
 #include <ctype.h>
 
 #include <string>
-#include <string_view>
 
 #include "ILexer.h"
 #include "Scintilla.h"
@@ -319,7 +318,7 @@ next:
 					break;
 				case '[':
 					expected = true;
-					[[fallthrough]];
+					wxFALLTHROUGH;
 				case ']':
 				case '(':
 				case ')':

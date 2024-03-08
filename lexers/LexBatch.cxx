@@ -13,7 +13,6 @@
 #include <cstdarg>
 
 #include <string>
-#include <string_view>
 #include <initializer_list>
 
 #include "ILexer.h"
@@ -209,7 +208,7 @@ void ColouriseBatchDoc(
 					wordBuffer[wbl] = MakeLowerCase(lineBuffer[offset]);
 				}
 				wordBuffer[wbl] = '\0';
-				const std::string_view wordView(wordBuffer);
+				const std::string wordView(wordBuffer);
 				Sci_PositionU wbo = 0;		// Word Buffer Offset - also Special Keyword Buffer Length
 
 				// Check for Comment - return if found
@@ -324,7 +323,7 @@ void ColouriseBatchDoc(
 							(InList(sKeywordBuffer, {"call", "echo", "goto"}) )))) {
 							sKeywordFound = true;
 							// ECHO requires no further Regular Keyword Checking
-							if (std::string_view(sKeywordBuffer) == "echo") {
+							if (std::string(sKeywordBuffer) == "echo") {
 								continueProcessing = false;
 							}
 							// Colorize Special Keyword as Regular Keyword

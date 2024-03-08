@@ -12,7 +12,6 @@
 #include <cstring>
 
 #include <string>
-#include <string_view>
 #include <map>
 #include <functional>
 
@@ -22,7 +21,7 @@ using namespace Lexilla;
 
 namespace {
 
-using mapss = std::map<std::string, std::string, std::less<>>;
+using mapss = std::map<std::string, std::string, std::less<std::string>>;
 
 mapss *PropsFromPointer(void *impl) noexcept {
 	return static_cast<mapss *>(impl);
@@ -41,7 +40,7 @@ PropSetSimple::~PropSetSimple() {
 	impl = nullptr;
 }
 
-bool PropSetSimple::Set(std::string_view key, std::string_view val) {
+bool PropSetSimple::Set(std::string const& key, std::string const& val) {
 	mapss *props = PropsFromPointer(impl);
 	if (!props)
 		return false;
@@ -56,7 +55,7 @@ bool PropSetSimple::Set(std::string_view key, std::string_view val) {
 	return true;
 }
 
-const char *PropSetSimple::Get(std::string_view key) const {
+const char *PropSetSimple::Get(std::string const& key) const {
 	mapss *props = PropsFromPointer(impl);
 	if (props) {
 		mapss::const_iterator const keyPos = props->find(key);
@@ -67,7 +66,7 @@ const char *PropSetSimple::Get(std::string_view key) const {
 	return "";
 }
 
-int PropSetSimple::GetInt(std::string_view key, int defaultValue) const {
+int PropSetSimple::GetInt(std::string const& key, int defaultValue) const {
 	const char *val = Get(key);
 	assert(val);
 	if (*val) {

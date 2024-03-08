@@ -13,7 +13,6 @@
 #include <cstdarg>
 
 #include <string>
-#include <string_view>
 
 #include "ILexer.h"
 #include "Scintilla.h"
@@ -215,7 +214,7 @@ bool lookingAtHereDocDelim(Accessor &styler, Sci_Position pos, Sci_Position leng
 }
 
 //XXX Identical to Perl, put in common area
-constexpr char opposite(char ch) noexcept {
+inline char opposite(char ch) noexcept {
     if (ch == '(')
         return ')';
     if (ch == '[')
@@ -1948,7 +1947,7 @@ void FoldRbDoc(Sci_PositionU startPos, Sci_Position length, int initStyle, WordL
                     break;
                 }
                 // fall through for unary operator or single letter name
-                [[fallthrough]];
+                wxFALLTHROUGH;
             case MethodDefinition::Operator:
             case MethodDefinition::Name:
                 if (isEOLChar(chNext) || chNext == '#') {

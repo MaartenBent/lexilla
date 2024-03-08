@@ -54,7 +54,7 @@ std::wstring WideStringFromUTF8(std::string const& sv) {
 	const int sLength = static_cast<int>(sv.length());
 	const int cchWide = ::MultiByteToWideChar(CP_UTF8, 0, sv.data(), sLength, nullptr, 0);
 	std::wstring sWide(cchWide, 0);
-	::MultiByteToWideChar(CP_UTF8, 0, sv.data(), sLength, sWide.data(), cchWide);
+	::MultiByteToWideChar(CP_UTF8, 0, sv.data(), sLength, (wchar_t*)sWide.data(), cchWide);
 	return sWide;
 }
 
@@ -104,7 +104,7 @@ bool NameContainsDot(std::string const& path) noexcept {
 	return false;
 }
 
-constexpr bool HasPrefix(std::string_view s, std::string_view prefix) noexcept {
+inline bool HasPrefix(std::string const& s, std::string const& prefix) noexcept {
 	return (s.size() >= prefix.size()) && (prefix == s.substr(0, prefix.size()));
 }
 

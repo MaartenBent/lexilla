@@ -14,7 +14,7 @@ class WordClassifier {
 	int baseStyle;
 	int firstStyle;
 	int lenStyles;
-	using WordStyleMap = std::map<std::string, int, std::less<>>;
+	using WordStyleMap = std::map<std::string, int, std::less<std::string>>;
 	WordStyleMap wordToStyle;
 
 public:
@@ -50,7 +50,7 @@ public:
 		wordToStyle.clear();
 	}
 
-	int ValueFor(std::string_view s) const {
+	int ValueFor(std::string const& s) const {
 		WordStyleMap::const_iterator const it = wordToStyle.find(s);
 		if (it != wordToStyle.end())
 			return it->second;

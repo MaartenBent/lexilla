@@ -55,7 +55,6 @@ The list of keywords that can be used in dataflex.properties file (up to DataFle
 #include <ctype.h>
 
 #include <string>
-#include <string_view>
 
 #include "ILexer.h"
 #include "Scintilla.h"

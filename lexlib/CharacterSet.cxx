@@ -9,7 +9,7 @@
 #include <cstdlib>
 #include <cassert>
 
-#include <string_view>
+#include <string>
 
 #include "CharacterSet.h"
 
@@ -32,7 +32,7 @@ int CompareCaseInsensitive(const char *a, const char *b) noexcept {
 	return *a - *b;
 }
 
-bool EqualCaseInsensitive(std::string_view a, std::string_view b) noexcept {
+bool EqualCaseInsensitive(std::string const& a, std::string const& b) noexcept {
 	if (a.length() != b.length()) {
 		return false;
 	}

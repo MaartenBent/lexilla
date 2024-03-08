@@ -13,15 +13,15 @@
 #include <cstdarg>
 
 #include <string>
-#include <string_view>
 #include <map>
 #include <set>
 #include <functional>
 
-#include "Compat.h"
 #include "ILexer.h"
 #include "Scintilla.h"
 #include "SciLexer.h"
+#include "LexillaCompat.h"
+
 #include "WordList.h"
 #include "LexAccessor.h"
 #include "Accessor.h"
@@ -545,7 +545,11 @@ bool isDjangoBlockEnd(const int ch, const int chNext, const std::string &blockTy
 
 class PhpNumberState {
 	enum NumberBase { BASE_10 = 0, BASE_2, BASE_8, BASE_16 };
+#if wxCHECK_CXX_STD(201703L)
 	static constexpr const char *const digitList[] = { "_0123456789", "_01", "_01234567", "_0123456789abcdefABCDEF" };
+#else
+	char const* digitList[4] = { "_0123456789", "_01", "_01234567", "_0123456789abcdefABCDEF" };
+#endif
 
 	NumberBase base = BASE_10;
 	bool decimalPart = false;
@@ -561,8 +565,8 @@ class PhpNumberState {
 	bool exponentChar = false;
 
 public:
-	[[nodiscard]] bool isInvalid() const noexcept { return invalid; }
-	[[nodiscard]] bool isFinished() const noexcept { return finished; }
+	wxNODISCARD bool isInvalid() const noexcept { return invalid; }
+	wxNODISCARD bool isFinished() const noexcept { return finished; }
 
 	bool init(int ch, int chPlus1, int chPlus2) {
 		base = BASE_10;

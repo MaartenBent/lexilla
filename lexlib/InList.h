@@ -10,8 +10,8 @@
 
 namespace Lexilla {
 
-bool InList(std::string_view value, std::initializer_list<std::string_view> list) noexcept;
-bool InListCaseInsensitive(std::string_view value, std::initializer_list<std::string_view> list) noexcept;
+bool InList(std::string const& value, std::initializer_list<std::string> list) noexcept;
+bool InListCaseInsensitive(std::string const& value, std::initializer_list<std::string> list) noexcept;
 
 }
 

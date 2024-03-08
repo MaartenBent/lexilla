@@ -12,17 +12,16 @@
 
 #include <utility>
 #include <string>
-#include <string_view>
 #include <vector>
 #include <map>
 #include <algorithm>
 #include <iterator>
 #include <functional>
 
-#include "Compat.h"
 #include "ILexer.h"
 #include "Scintilla.h"
 #include "SciLexer.h"
+#include "LexillaCompat.h"
 
 #include "StringCopy.h"
 #include "WordList.h"
@@ -92,7 +91,7 @@ constexpr bool IsSpaceOrTab(int ch) noexcept {
 	return ch == ' ' || ch == '\t';
 }
 
-constexpr bool IsOperatorOrSpace(int ch) noexcept {
+inline bool IsOperatorOrSpace(int ch) noexcept {
 	return isoperator(ch) || IsASpace(ch);
 }
 
@@ -958,11 +957,11 @@ void SCI_METHOD LexerCPP::Lex(Sci_PositionU startPos, Sci_Position length, int i
 					}
 					const bool literalString = sc.ch == '\"';
 					if (literalString || sc.ch == '\'') {
-						std::string_view s = currentText;
+						std::string s = currentText;
 						size_t lenS = s.length();
 						const bool raw = literalString && sc.chPrev == 'R' && !setInvalidRawFirst.Contains(sc.chNext);
 						if (raw) {
-							s.remove_suffix(1);
+							s.pop_back();
 							lenS--;
 						}
 						const bool valid =

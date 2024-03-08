@@ -16,7 +16,6 @@
 
 // C++ standard library
 #include <string>
-#include <string_view>
 #include <map>
 #include <functional>
 

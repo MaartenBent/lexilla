@@ -13,7 +13,6 @@
 #include <cstdarg>
 
 #include <string>
-#include <string_view>
 
 #include "ILexer.h"
 #include "Scintilla.h"
@@ -228,14 +227,14 @@ void ColouriseYAMLDoc(Sci_PositionU startPos, Sci_Position length, int, WordList
 		lineBuffer.push_back(styler[i]);
 		if (AtEOL(styler, i)) {
 			// End of line (or of line buffer) met, colourise it
-			ColouriseYAMLLine(lineBuffer.data(), lineCurrent, lineBuffer.length(), startLine, i, *keywordLists[0], styler);
+			ColouriseYAMLLine((char*)lineBuffer.data(), lineCurrent, lineBuffer.length(), startLine, i, *keywordLists[0], styler);
 			lineBuffer.clear();
 			startLine = i + 1;
 			lineCurrent++;
 		}
 	}
 	if (!lineBuffer.empty()) {	// Last line does not have ending characters
-		ColouriseYAMLLine(lineBuffer.data(), lineCurrent, lineBuffer.length(), startLine, startPos + length - 1, *keywordLists[0], styler);
+		ColouriseYAMLLine((char*)lineBuffer.data(), lineCurrent, lineBuffer.length(), startLine, startPos + length - 1, *keywordLists[0], styler);
 	}
 }
 
