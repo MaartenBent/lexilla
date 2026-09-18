@@ -27,17 +27,19 @@
 
 using namespace Lexilla;
 
+namespace {
+
 // Extended to accept accented characters
-static inline bool IsAWordChar(int ch) {
+inline bool IsAWordChar(int ch) {
 	return ch >= 0x80 ||
 	       (isalnum(ch) || ch == '_' || ch ==':' || ch=='.'); // : name space separator
 }
 
-static inline bool IsAWordStart(int ch) {
+inline bool IsAWordStart(int ch) {
 	return ch >= 0x80 || (ch ==':' || isalpha(ch) || ch == '_');
 }
 
-static inline bool IsANumberChar(int ch) {
+inline bool IsANumberChar(int ch) {
 	// Not exactly following number definition (several dots are seen as OK, etc.)
 	// but probably enough in most cases.
 	return (ch < 0x80) &&
@@ -45,7 +47,7 @@ static inline bool IsANumberChar(int ch) {
 	        ch == '.' || ch == '-' || ch == '+');
 }
 
-static void ColouriseTCLDoc(Sci_PositionU startPos, Sci_Position length, int , WordList *keywordlists[], Accessor &styler) {
+void ColouriseTCLDoc(Sci_PositionU startPos, Sci_Position length, int, WordList *keywordlists[], Accessor &styler) {
 #define  isComment(s) (s==SCE_TCL_COMMENT || s==SCE_TCL_COMMENTLINE || s==SCE_TCL_COMMENT_BOX || s==SCE_TCL_BLOCK_COMMENT)
 	const bool foldComment = styler.GetPropertyInt("fold.comment") != 0;
 	const bool foldCompact = styler.GetPropertyInt("fold.compact", 1) != 0;
@@ -357,7 +359,7 @@ next:
 	sc.Complete();
 }
 
-static const char *const tclWordListDesc[] = {
+const char *const tclWordListDesc[] = {
 	"TCL Keywords",
 	"TK Keywords",
 	"iTCL Keywords",
@@ -369,6 +371,8 @@ static const char *const tclWordListDesc[] = {
 	"user4",
 	0
 };
+
+}
 
 // this code supports folding in the colourizer
 extern const LexerModule lmTCL(SCLEX_TCL, ColouriseTCLDoc, "tcl", 0, tclWordListDesc);

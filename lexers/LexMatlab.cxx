@@ -51,21 +51,23 @@
 
 using namespace Lexilla;
 
-static bool IsMatlabCommentChar(int c) {
+namespace {
+
+bool IsMatlabCommentChar(int c) {
 	return (c == '%') ;
 }
 
-static bool IsOctaveCommentChar(int c) {
+bool IsOctaveCommentChar(int c) {
 	return (c == '%' || c == '#') ;
 }
 
-static inline int LowerCase(int c) {
+inline int LowerCase(int c) {
 	if (c >= 'A' && c <= 'Z')
 		return 'a' + c - 'A';
 	return c;
 }
 
-static int CheckKeywordFoldPoint(char *str) {
+int CheckKeywordFoldPoint(char *str) {
 	if (strcmp ("if", str) == 0 ||
 		strcmp ("for", str) == 0 ||
 		strcmp ("switch", str) == 0 ||
@@ -87,7 +89,7 @@ static int CheckKeywordFoldPoint(char *str) {
 	return 0;
 }
 
-static bool IsSpaceToEOL(Sci_Position startPos, Accessor &styler) {
+bool IsSpaceToEOL(Sci_Position startPos, Accessor &styler) {
 	Sci_Position line = styler.GetLine(startPos);
 	Sci_Position eol_pos = styler.LineStart(line + 1) - 1;
 	for (Sci_Position i = startPos; i < eol_pos; i++) {
@@ -106,7 +108,7 @@ static bool IsSpaceToEOL(Sci_Position startPos, Accessor &styler) {
 #define MATLAB_STATE_IN_CLASS_SCOPE      (1 <<(MATLAB_STATE_FLAGS_OFFSET+1))
 #define MATLAB_STATE_IN_ARGUMENTS_SCOPE  (1 <<(MATLAB_STATE_FLAGS_OFFSET+2))
 
-static int ComposeLineState(int commentDepth,
+int ComposeLineState(int commentDepth,
 							int foldingLevel,
 							int expectingArgumentsBlock,
 							int inClassScope,
@@ -124,7 +126,7 @@ static int ComposeLineState(int commentDepth,
 				& MATLAB_STATE_IN_ARGUMENTS_SCOPE);
 }
 
-static void ColouriseMatlabOctaveDoc(
+void ColouriseMatlabOctaveDoc(
             Sci_PositionU startPos, Sci_Position length, int initStyle,
             WordList *keywordlists[], Accessor &styler,
             bool (*IsCommentChar)(int),
@@ -418,17 +420,17 @@ static void ColouriseMatlabOctaveDoc(
 	sc.Complete();
 }
 
-static void ColouriseMatlabDoc(Sci_PositionU startPos, Sci_Position length, int initStyle,
+void ColouriseMatlabDoc(Sci_PositionU startPos, Sci_Position length, int initStyle,
                                WordList *keywordlists[], Accessor &styler) {
 	ColouriseMatlabOctaveDoc(startPos, length, initStyle, keywordlists, styler, IsMatlabCommentChar, true);
 }
 
-static void ColouriseOctaveDoc(Sci_PositionU startPos, Sci_Position length, int initStyle,
+void ColouriseOctaveDoc(Sci_PositionU startPos, Sci_Position length, int initStyle,
                                WordList *keywordlists[], Accessor &styler) {
 	ColouriseMatlabOctaveDoc(startPos, length, initStyle, keywordlists, styler, IsOctaveCommentChar, false);
 }
 
-static void FoldMatlabOctaveDoc(Sci_PositionU startPos, Sci_Position length, int initStyle,
+void FoldMatlabOctaveDoc(Sci_PositionU startPos, Sci_Position length, int initStyle,
                                 WordList *[], Accessor &styler,
                                 bool (*IsComment)(int ch)) {
 
@@ -502,25 +504,27 @@ static void FoldMatlabOctaveDoc(Sci_PositionU startPos, Sci_Position length, int
 	}
 }
 
-static void FoldMatlabDoc(Sci_PositionU startPos, Sci_Position length, int initStyle,
+void FoldMatlabDoc(Sci_PositionU startPos, Sci_Position length, int initStyle,
                           WordList *keywordlists[], Accessor &styler) {
 	FoldMatlabOctaveDoc(startPos, length, initStyle, keywordlists, styler, IsMatlabCommentChar);
 }
 
-static void FoldOctaveDoc(Sci_PositionU startPos, Sci_Position length, int initStyle,
+void FoldOctaveDoc(Sci_PositionU startPos, Sci_Position length, int initStyle,
                           WordList *keywordlists[], Accessor &styler) {
 	FoldMatlabOctaveDoc(startPos, length, initStyle, keywordlists, styler, IsOctaveCommentChar);
 }
 
-static const char * const matlabWordListDesc[] = {
+const char * const matlabWordListDesc[] = {
 	"Keywords",
 	0
 };
 
-static const char * const octaveWordListDesc[] = {
+const char * const octaveWordListDesc[] = {
 	"Keywords",
 	0
 };
+
+}
 
 extern const LexerModule lmMatlab(SCLEX_MATLAB, ColouriseMatlabDoc, "matlab", FoldMatlabDoc, matlabWordListDesc);
 

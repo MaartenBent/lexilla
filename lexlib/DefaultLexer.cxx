@@ -10,6 +10,7 @@
 #include <cstring>
 
 #include <string>
+#include <map>
 
 #include "ILexer.h"
 #include "Scintilla.h"
@@ -20,6 +21,7 @@
 #include "LexAccessor.h"
 #include "Accessor.h"
 #include "LexerModule.h"
+#include "OptionSet.h"
 #include "DefaultLexer.h"
 
 using namespace Lexilla;
@@ -45,14 +47,20 @@ int SCI_METHOD DefaultLexer::Version() const {
 }
 
 const char * SCI_METHOD DefaultLexer::PropertyNames() {
+	if (osi)
+		return osi->PropertyNames();
 	return "";
 }
 
-int SCI_METHOD DefaultLexer::PropertyType(const char *) {
+int SCI_METHOD DefaultLexer::PropertyType(const char *name) {
+	if (osi)
+		return osi->PropertyType(name);
 	return SC_TYPE_BOOLEAN;
 }
 
-const char * SCI_METHOD DefaultLexer::DescribeProperty(const char *) {
+const char * SCI_METHOD DefaultLexer::DescribeProperty(const char *name) {
+	if (osi)
+		return osi->DescribeProperty(name);
 	return "";
 }
 
@@ -61,6 +69,8 @@ Sci_Position SCI_METHOD DefaultLexer::PropertySet(const char *, const char *) {
 }
 
 const char * SCI_METHOD DefaultLexer::DescribeWordListSets() {
+	if (osi)
+		return osi->DescribeWordListSets();
 	return "";
 }
 
@@ -138,6 +148,8 @@ int SCI_METHOD DefaultLexer::GetIdentifier() {
 	return language;
 }
 
-const char *SCI_METHOD DefaultLexer::PropertyGet(const char * /* key */) {
+const char *SCI_METHOD DefaultLexer::PropertyGet(const char *key) {
+	if (osi)
+		return osi->PropertyGet(key);
 	return nullptr;
 }

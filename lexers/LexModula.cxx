@@ -39,7 +39,9 @@ using namespace Lexilla;
 #define DEBUG_STATE( p, c )
 #endif
 
-static inline bool IsDigitOfBase( unsigned ch, unsigned base ) {
+namespace {
+
+inline bool IsDigitOfBase( unsigned ch, unsigned base ) {
 	if( ch < '0' || ch > 'f' ) return false;
 	if( base <= 10 ) {
 		if( ch >= ( '0' + base ) ) return false;
@@ -56,7 +58,7 @@ static inline bool IsDigitOfBase( unsigned ch, unsigned base ) {
 	return true;
 }
 
-static inline unsigned IsOperator( StyleContext & sc, WordList & op ) {
+inline unsigned IsOperator( StyleContext & sc, WordList & op ) {
 	int i;
 	char s[3];
 
@@ -79,7 +81,7 @@ static inline unsigned IsOperator( StyleContext & sc, WordList & op ) {
 	return 0;
 }
 
-static inline bool IsEOL( Accessor &styler, Sci_PositionU curPos ) {
+inline bool IsEOL( Accessor &styler, Sci_PositionU curPos ) {
 	unsigned ch = styler.SafeGetCharAt( curPos );
 	if( ( ch == '\r' && styler.SafeGetCharAt( curPos + 1 ) == '\n' ) ||
 		( ch == '\n' && styler.SafeGetCharAt( curPos - 1 ) != '\r' ) ) {
@@ -88,7 +90,7 @@ static inline bool IsEOL( Accessor &styler, Sci_PositionU curPos ) {
 	return false;
 }
 
-static inline bool checkStatement(
+inline bool checkStatement(
 	Accessor &styler,
 	Sci_Position &curPos,
 	const char *stt, bool spaceAfter = true ) {
@@ -108,7 +110,7 @@ static inline bool checkStatement(
 	return true;
 }
 
-static inline bool checkEndSemicolon(
+inline bool checkEndSemicolon(
 	Accessor &styler,
 	Sci_Position &curPos, Sci_Position endPos )
 {
@@ -131,7 +133,7 @@ static inline bool checkEndSemicolon(
 	return true;
 }
 
-static inline bool checkKeyIdentOper(
+inline bool checkKeyIdentOper(
 
 	Accessor &styler,
 	Sci_Position &curPos, Sci_Position endPos,
@@ -174,7 +176,7 @@ static inline bool checkKeyIdentOper(
 	return true;
 }
 
-static void FoldModulaDoc( Sci_PositionU startPos,
+void FoldModulaDoc( Sci_PositionU startPos,
 						 Sci_Position length,
 						 int , WordList *[],
 						 Accessor &styler)
@@ -314,7 +316,7 @@ static void FoldModulaDoc( Sci_PositionU startPos,
 	}
 }
 
-static inline bool skipWhiteSpaces( StyleContext & sc ) {
+inline bool skipWhiteSpaces( StyleContext & sc ) {
 	while( isspace( sc.ch ) ) {
 		sc.SetState( SCE_MODULA_DEFAULT );
 		if( sc.More() )
@@ -325,7 +327,7 @@ static inline bool skipWhiteSpaces( StyleContext & sc ) {
 	return true;
 }
 
-static void ColouriseModulaDoc(	Sci_PositionU startPos,
+void ColouriseModulaDoc(	Sci_PositionU startPos,
 									Sci_Position length,
 									int initStyle,
 									WordList *wl[],
@@ -730,7 +732,7 @@ static void ColouriseModulaDoc(	Sci_PositionU startPos,
 	sc.Complete();
 }
 
-static const char *const modulaWordListDesc[] =
+const char *const modulaWordListDesc[] =
 {
 	"Keywords",
 	"ReservedKeywords",
@@ -740,6 +742,8 @@ static const char *const modulaWordListDesc[] =
 	"DoxygeneKeywords",
 	0
 };
+
+}
 
 extern const LexerModule lmModula( SCLEX_MODULA, ColouriseModulaDoc, "modula", FoldModulaDoc,
 					  modulaWordListDesc);

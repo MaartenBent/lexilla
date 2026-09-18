@@ -31,7 +31,9 @@
 
 using namespace Lexilla;
 
-static int is_radix(int radix, int ch) {
+namespace {
+
+int is_radix(int radix, int ch) {
 	int digit;
 
 	if (36 < radix || 2 > radix)
@@ -72,11 +74,11 @@ typedef enum {
 	PREPROCESSOR
 } atom_parse_state_t;
 
-static inline bool IsAWordChar(const int ch) {
+inline bool IsAWordChar(const int ch) {
 	return (ch < 0x80) && (ch != ' ') && (isalnum(ch) || ch == '_');
 }
 
-static void ColouriseErlangDoc(Sci_PositionU startPos, Sci_Position length, int initStyle,
+void ColouriseErlangDoc(Sci_PositionU startPos, Sci_Position length, int initStyle,
 								WordList *keywordlists[], Accessor &styler) {
 
 	StyleContext sc(startPos, length, initStyle, styler);
@@ -504,7 +506,7 @@ static void ColouriseErlangDoc(Sci_PositionU startPos, Sci_Position length, int 
 	sc.Complete();
 }
 
-static int ClassifyErlangFoldPoint(
+int ClassifyErlangFoldPoint(
 	Accessor &styler,
 	int styleNext,
 	Sci_Position keyword_start
@@ -527,7 +529,7 @@ static int ClassifyErlangFoldPoint(
 	return lev;
 }
 
-static void FoldErlangDoc(
+void FoldErlangDoc(
 	Sci_PositionU startPos, Sci_Position length, int initStyle,
 	WordList** /*keywordlists*/, Accessor &styler
 ) {
@@ -612,7 +614,7 @@ static void FoldErlangDoc(
 					| (styler.LevelAt(currentLine) & ~SC_FOLDLEVELNUMBERMASK));
 }
 
-static const char * const erlangWordListDesc[] = {
+const char * const erlangWordListDesc[] = {
 	"Erlang Reserved words",
 	"Erlang BIFs",
 	"Erlang Preprocessor",
@@ -621,6 +623,8 @@ static const char * const erlangWordListDesc[] = {
 	"Erlang Documentation Macro",
 	0
 };
+
+}
 
 extern const LexerModule lmErlang(
 	SCLEX_ERLANG,

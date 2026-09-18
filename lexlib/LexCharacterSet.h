@@ -17,7 +17,9 @@ namespace Lexilla {
 
 template<int N>
 class CharacterSetArray {
-	unsigned char bset[(N-1)/8 + 1] = {};
+	static constexpr int bitsPerChar = 8;
+	static constexpr int mask3Bits = 7;
+	unsigned char bset[((N-1)/bitsPerChar) + 1] = {};
 	bool valueAfter = false;
 public:
 	enum setBase {
@@ -28,7 +30,7 @@ public:
 		setAlpha=setLower|setUpper,
 		setAlphaNum=setAlpha|setDigits
 	};
-	CharacterSetArray(setBase base=setNone, const char *initialSet="", bool valueAfter_=false) noexcept {
+	explicit CharacterSetArray(setBase base=setNone, const char *initialSet="", bool valueAfter_=false) noexcept {
 		valueAfter = valueAfter_;
 		AddString(initialSet);
 		if (base & setLower)
@@ -38,7 +40,7 @@ public:
 		if (base & setDigits)
 			AddString("0123456789");
 	}
-	CharacterSetArray(const char *initialSet, bool valueAfter_=false) noexcept :
+	explicit CharacterSetArray(const char *initialSet, bool valueAfter_=false) noexcept :
 		CharacterSetArray(setNone, initialSet, valueAfter_) {
 	}
 	// For compatibility with previous version but should not be used in new code.
@@ -50,7 +52,7 @@ public:
 	void Add(int val) noexcept {
 		assert(val >= 0);
 		assert(val < N);
-		bset[val >> 3] |= 1 << (val & 7);
+		bset[val >> 3] |= 1 << (val & mask3Bits);
 	}
 	void AddString(const char *setToAdd) noexcept {
 		for (const char *cp=setToAdd; *cp; cp++) {
@@ -59,20 +61,21 @@ public:
 			Add(uch);
 		}
 	}
-	bool Contains(int val) const noexcept {
+	[[nodiscard]] bool Contains(int val) const noexcept {
 		assert(val >= 0);
 		if (val < 0) return false;
 		if (val >= N) return valueAfter;
-		return bset[val >> 3] & (1 << (val & 7));
+		return bset[val >> 3] & (1 << (val & mask3Bits));
 	}
-	bool Contains(char ch) const noexcept {
+	[[nodiscard]] bool Contains(char ch) const noexcept {
 		// Overload char as char may be signed
 		const unsigned char uch = ch;
 		return Contains(uch);
 	}
 };
 
-using CharacterSet = CharacterSetArray<0x80>;
+constexpr int countASCII = 0x80;
+using CharacterSet = CharacterSetArray<countASCII>;
 
 // Functions for classifying characters
 
@@ -95,8 +98,11 @@ void AnyOf(T*, Args...) noexcept {}
 template <typename T, typename... Args>
 void AnyOf(const T*, Args...) noexcept {}
 
+constexpr int charTab = 0x09;
+constexpr int charCarriageReturn = 0x0D;
+
 constexpr bool IsASpace(int ch) noexcept {
-    return (ch == ' ') || ((ch >= 0x09) && (ch <= 0x0d));
+    return (ch == ' ') || ((ch >= charTab) && (ch <= charCarriageReturn));
 }
 
 constexpr bool IsASpaceOrTab(int ch) noexcept {
@@ -118,17 +124,18 @@ constexpr bool IsAnOctalDigit(int ch) noexcept {
 }
 
 inline bool IsADigit(int ch, int base) noexcept {
-	if (base <= 10) {
+	constexpr int digits = 10;
+	if (base <= digits) {
 		return (ch >= '0') && (ch < '0' + base);
-	} else {
-		return ((ch >= '0') && (ch <= '9')) ||
-		       ((ch >= 'A') && (ch < 'A' + base - 10)) ||
-		       ((ch >= 'a') && (ch < 'a' + base - 10));
 	}
+	return ((ch >= '0') && (ch <= '9')) ||
+		    ((ch >= 'A') && (ch < 'A' + base - digits)) ||
+		    ((ch >= 'a') && (ch < 'a' + base - digits));
 }
 
 constexpr bool IsASCII(int ch) noexcept {
-	return (ch >= 0) && (ch < 0x80);
+	constexpr int lastASCII = 0x7F;
+	return (ch >= 0) && (ch <= lastASCII);
 }
 
 constexpr bool IsLowerCase(int ch) noexcept {
@@ -155,7 +162,7 @@ constexpr bool IsAlphaNumeric(int ch) noexcept {
  * This is ASCII specific but is safe with chars >= 0x80.
  */
 constexpr bool isspacechar(int ch) noexcept {
-    return (ch == ' ') || ((ch >= 0x09) && (ch <= 0x0d));
+    return (ch == ' ') || ((ch >= charTab) && (ch <= charCarriageReturn));
 }
 
 constexpr bool iswordchar(int ch) noexcept {
@@ -185,16 +192,14 @@ template <typename T>
 T MakeUpperCase(T ch) noexcept {
 	if (ch < 'a' || ch > 'z')
 		return ch;
-	else
-		return ch - 'a' + 'A';
+	return ch - 'a' + 'A';
 }
 
 template <typename T>
 T MakeLowerCase(T ch) noexcept {
 	if (ch < 'A' || ch > 'Z')
 		return ch;
-	else
-		return ch - 'A' + 'a';
+	return ch - 'A' + 'a';
 }
 
 int CompareCaseInsensitive(const char *a, const char *b) noexcept;
