@@ -20,7 +20,7 @@ using namespace Lexilla;
 
 namespace Lexilla {
 
-bool LexAccessor::Match(Sci_Position pos, std::string_view sv) {
+bool LexAccessor::Match(Sci_Position pos, std::string const& sv) {
 	for (unsigned int i = 0; i < sv.size(); i++) {
 		if (sv[i] != SafeGetCharAt(pos + i)) {
 			return false;

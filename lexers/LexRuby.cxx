@@ -82,7 +82,7 @@ constexpr bool isWhiteSpace(char ch) noexcept {
     return ch == ' ' || ch == '\t' || ch == '\r' || ch == '\n';
 }
 
-constexpr bool isOperatorName(char ch) noexcept {
+bool isOperatorName(char ch) noexcept {
     // see operator list at https://docs.ruby-lang.org/en/master/syntax/methods_rdoc.html#method-names
     return AnyOf(ch, '[', '*', '!', '~', '+', '-', '*', '/', '%', '=', '<', '>', '&', '^', '|');
 }
@@ -528,7 +528,7 @@ constexpr bool isInterpolableLiteral(int state) noexcept {
            && state != SCE_RB_CHARACTER;
 }
 
-constexpr bool isSingleSpecialVariable(char ch) noexcept {
+bool isSingleSpecialVariable(char ch) noexcept {
     // https://docs.ruby-lang.org/en/master/globals_rdoc.html
     return AnyOf(ch, '~', '*', '$', '?', '!', '@', '/', '\\', ';', ',', '.', '=', ':', '<', '>', '"', '&', '`', '\'', '+');
 }
@@ -986,7 +986,7 @@ void LexerRuby::Lex(Sci_PositionU startPos, Sci_Position length, int initStyle, 
         SCE_RB_STRING_QS,
     };
     constexpr const char *q_chars = "qQrwWxiIs";
-    constexpr size_t q_charsLen = std::size(q_states);
+    constexpr size_t q_charsLen = Sci::size(q_states);
 
     // In most cases a value of 2 should be ample for the code in the
     // Ruby library, and the code the user is likely to enter.

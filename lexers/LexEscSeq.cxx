@@ -12,7 +12,6 @@
 #include <cstdarg>
 
 #include <string>
-#include <string_view>
 #include <map>
 #include <initializer_list>
 
@@ -25,7 +24,7 @@
 #include "LexAccessor.h"
 #include "Accessor.h"
 #include "StyleContext.h"
-#include "CharacterSet.h"
+#include "LexCharacterSet.h"
 #include "LexerModule.h"
 #include "OptionSet.h"
 #include "DefaultLexer.h"
@@ -242,7 +241,7 @@ class LexerEscSeq : public DefaultLexer {
 	OptionSetEscSeq osEscSeq;
 public:
 	LexerEscSeq() :
-		DefaultLexer("escseq", SCLEX_ESCSEQ, lexicalClasses, std::size(lexicalClasses)) {
+		DefaultLexer("escseq", SCLEX_ESCSEQ, lexicalClasses, Sci::size(lexicalClasses)) {
 	}
 
 	const char *SCI_METHOD PropertyNames() override {

@@ -192,7 +192,7 @@ class LexerPascal : public DefaultLexer {
 	OptionSetPascal osPascal;
 public:
 	explicit LexerPascal() :
-		DefaultLexer("pascal", SCLEX_PASCAL, lexicalClasses, std::size(lexicalClasses)) {
+		DefaultLexer("pascal", SCLEX_PASCAL, lexicalClasses, Sci::size(lexicalClasses)) {
 		SetOptionSet(&osPascal);
 	}
 	LexerPascal(const LexerPascal &) = delete;
