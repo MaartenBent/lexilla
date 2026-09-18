@@ -158,24 +158,24 @@ Sci_Position SCI_METHOD LexerErrorList::PropertySet(const char *key, const char 
 	return -1;
 }
 
-constexpr bool StartsWith(std::string_view haystack, std::string_view needle) noexcept {
+bool StartsWith(std::string const& haystack, std::string const& needle) noexcept {
 	return (needle.length() <= haystack.length()) &&
 		(haystack.substr(0, needle.length()) == needle);
 }
 
-constexpr bool Contains(std::string_view text, std::string_view a) noexcept {
+bool Contains(std::string const& text, std::string const& a) noexcept {
 	const size_t pos = text.find(a);
-	return pos != std::string_view::npos;
+	return pos != std::string::npos;
 }
 
 // Does text contain both a and b with b after a
-constexpr bool ContainsOrdered(std::string_view text, std::string_view a, std::string_view b) noexcept {
+bool ContainsOrdered(std::string const& text, std::string const& a, std::string const& b) noexcept {
 	const size_t posA = text.find(a);
-	if (posA == std::string_view::npos) {
+	if (posA == std::string::npos) {
 		return false;
 	}
 	const size_t posB = text.find(b, posA + a.length());
-	return posB != std::string_view::npos;
+	return posB != std::string::npos;
 }
 
 constexpr bool Is0To9(char ch) noexcept {
@@ -191,14 +191,14 @@ bool AtEOL(Accessor &styler, Sci_Position i) {
 	       ((styler[i] == '\r') && (styler.SafeGetCharAt(i + 1) != '\n'));
 }
 
-std::string_view LetterPrefix(std::string_view sv) noexcept {
+std::string LetterPrefix(std::string const& sv) noexcept {
 	Sci_PositionU i = 0;
 	while (i < sv.length() && IsUpperOrLowerCase(sv[i]))
 		i++;
 	return sv.substr(0, i);
 }
 
-bool IsGccExcerpt(std::string_view sv) noexcept {
+bool IsGccExcerpt(std::string sv) noexcept {
 	while (!sv.empty()) {
 		if ((sv.length() >= 3) && (sv[0] == ' ' && sv[1] == '|' && (sv[2] == ' ' || sv[2] == '+'))) {
 			return true;
@@ -206,7 +206,7 @@ bool IsGccExcerpt(std::string_view sv) noexcept {
 		if (!(sv[0] == ' ' || sv[0] == '+' || Is0To9(sv[0]))) {
 			return false;
 		}
-		sv.remove_prefix(1);
+		sv = sv.substr(1);
 	}
 	return true;
 }
@@ -228,7 +228,7 @@ bool IsBashDiagnostic(std::string const& sv) {
 }
 
 
-int RecogniseErrorListLine(std::string_view lineBuffer, Sci_Position &startValue) {
+int RecogniseErrorListLine(std::string const& lineBuffer, Sci_Position &startValue) {
 	if (lineBuffer.empty())
 		return SCE_ERR_DEFAULT;
 
@@ -401,7 +401,7 @@ int RecogniseErrorListLine(std::string_view lineBuffer, Sci_Position &startValue
 					// Move past above prefix: " " -> 1, ": " -> 2
 					// " " is likely a Delphi diagnostic, ": " a Microsoft diagnostic
 					const Sci_PositionU numstep = (ch == ' ') ? 1 : 2;
-					const std::string_view word = LetterPrefix(lineBuffer.substr(i + numstep));
+					const std::string word = LetterPrefix(lineBuffer.substr(i + numstep));
 					if (InListCaseInsensitive(word, {"error", "warning", "fatal", "catastrophic", "note", "remark"})) {
 						state = stMsVc;
 					} else {

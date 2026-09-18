@@ -82,7 +82,7 @@ constexpr bool isWhiteSpace(char ch) noexcept {
     return ch == ' ' || ch == '\t' || ch == '\r' || ch == '\n';
 }
 
-constexpr bool isOperatorName(char ch) noexcept {
+bool isOperatorName(char ch) noexcept {
     // see operator list at https://docs.ruby-lang.org/en/master/syntax/methods_rdoc.html#method-names
     return AnyOf(ch, '[', '*', '!', '~', '+', '-', '*', '/', '%', '=', '<', '>', '&', '^', '|');
 }
@@ -528,7 +528,7 @@ constexpr bool isInterpolableLiteral(int state) noexcept {
            && state != SCE_RB_CHARACTER;
 }
 
-constexpr bool isSingleSpecialVariable(char ch) noexcept {
+bool isSingleSpecialVariable(char ch) noexcept {
     // https://docs.ruby-lang.org/en/master/globals_rdoc.html
     return AnyOf(ch, '~', '*', '$', '?', '!', '@', '/', '\\', ';', ',', '.', '=', ':', '<', '>', '"', '&', '`', '\'', '+');
 }

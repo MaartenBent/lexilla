@@ -93,38 +93,38 @@ bool AtEOL(LexAccessor &styler, Sci_PositionU i) {
 }
 
 // Tests for BATCH Operators
-constexpr bool IsBOperator(char ch) noexcept {
+bool IsBOperator(char ch) noexcept {
 	return AnyOf(ch, '=', '+', '>', '<', '|', '?', '*', '&', '(', ')');
 }
 
 // Tests for BATCH Separators
-constexpr bool IsBSeparator(char ch) noexcept {
+bool IsBSeparator(char ch) noexcept {
 	return AnyOf(ch, '\\', '.', ';', '\"', '\'', '/');
 }
 
 // Both operators and separators -- words often ended with these characters.
-constexpr bool IsBPunctuation(char ch) noexcept {
+bool IsBPunctuation(char ch) noexcept {
 	return IsBOperator(ch) || IsBSeparator(ch);
 }
 
 // These characters end words.
-constexpr bool IsBEndWord(char ch) noexcept {
+bool IsBEndWord(char ch) noexcept {
 	return IsBPunctuation(ch) || AnyOf(ch, '%', '!');
 }
 
-constexpr void SkipSpace(Sci_PositionU &i, std::string_view sv) noexcept {
+void SkipSpace(Sci_PositionU &i, std::string const& sv) noexcept {
 	while (i < sv.length() && isspacechar(sv[i])) {
 		i++;
 	}
 }
 
-constexpr void SkipNonSpace(Sci_PositionU &i, std::string_view sv) noexcept {
+void SkipNonSpace(Sci_PositionU &i, std::string const& sv) noexcept {
 	while (i < sv.length() && !isspacechar(sv[i])) {
 		i++;
 	}
 }
 
-constexpr Sci_PositionU WordLength(std::string_view word) {
+Sci_PositionU WordLength(std::string const& word) {
 	Sci_PositionU i = 0;
 	while ((i < word.length()) && (!IsBEndWord(word[i]))) {
 		i++;
@@ -133,7 +133,7 @@ constexpr Sci_PositionU WordLength(std::string_view word) {
 }
 
 // Tests for escape character
-bool IsEscaped(const char* wordStr, Sci_PositionU pos) noexcept {
+bool IsEscaped(std::string const& wordStr, Sci_PositionU pos) noexcept {
 	bool isQoted=false;
 	while (pos>0){
 		pos--;
@@ -148,6 +148,7 @@ bool IsEscaped(const char* wordStr, Sci_PositionU pos) noexcept {
 bool IsQuotedBy(std::string const& svBuffer, char quote) noexcept {
 	bool CurrentStatus = false;
 	size_t pQuote = svBuffer.find(quote);
+	while (pQuote != std::string::npos) {
 		if (!IsEscaped(svBuffer.data(), pQuote)) {
 			CurrentStatus = !CurrentStatus;
 		}
@@ -157,7 +158,7 @@ bool IsQuotedBy(std::string const& svBuffer, char quote) noexcept {
 }
 
 // Tests for quote character
-bool textQuoted(const char *lineBuffer, Sci_PositionU endPos) noexcept {
+bool textQuoted(std::string const& lineBuffer, Sci_PositionU endPos) noexcept {
 	const std::string svBuffer(lineBuffer, endPos);
 	return IsQuotedBy(svBuffer, '\"') || IsQuotedBy(svBuffer, '\'');
 }

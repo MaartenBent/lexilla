@@ -748,7 +748,7 @@ public:
 
 Sci_Position SCI_METHOD LexerCPP::PropertySet(const char *key, const char *val) {
 	if (osCPP.PropertySet(&options, key, val)) {
-		const std::string_view keyView(key);
+		const std::string keyView(key);
 		if ((keyView == "lexer.cpp.allow.dollars") || (keyView == "lexer.cpp.allow.hashes")) {
 			setWord = CharacterSet(CharacterSet::setAlphaNum, "._", true);
 			if (options.identifiersAllowDollars) {
@@ -1556,9 +1556,9 @@ void SCI_METHOD LexerCPP::Fold(Sci_PositionU startPos, Sci_Position length, int 
 		}
 		if (options.foldComment && options.foldCommentExplicit && ((style == SCE_C_COMMENTLINE) || options.foldExplicitAnywhere)) {
 			if (userDefinedFoldMarkers) {
-				if (styler.Match(i, std::string_view(options.foldExplicitStart))) {
+				if (styler.Match(i, std::string(options.foldExplicitStart))) {
 					levelNext++;
-				} else if (styler.Match(i, std::string_view(options.foldExplicitEnd))) {
+				} else if (styler.Match(i, std::string(options.foldExplicitEnd))) {
 					levelNext--;
 				}
 			} else {
