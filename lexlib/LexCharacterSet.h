@@ -61,13 +61,13 @@ public:
 			Add(uch);
 		}
 	}
-	[[nodiscard]] bool Contains(int val) const noexcept {
+	wxNODISCARD bool Contains(int val) const noexcept {
 		assert(val >= 0);
 		if (val < 0) return false;
 		if (val >= N) return valueAfter;
 		return bset[val >> 3] & (1 << (val & mask3Bits));
 	}
-	[[nodiscard]] bool Contains(char ch) const noexcept {
+	wxNODISCARD bool Contains(char ch) const noexcept {
 		// Overload char as char may be signed
 		const unsigned char uch = ch;
 		return Contains(uch);
@@ -134,8 +134,7 @@ inline bool IsADigit(int ch, int base) noexcept {
 }
 
 constexpr bool IsASCII(int ch) noexcept {
-	constexpr int lastASCII = 0x7F;
-	return (ch >= 0) && (ch <= lastASCII);
+	return (ch >= 0) && (ch <= 0x7F);
 }
 
 constexpr bool IsLowerCase(int ch) noexcept {

@@ -986,7 +986,7 @@ void LexerRuby::Lex(Sci_PositionU startPos, Sci_Position length, int initStyle, 
         SCE_RB_STRING_QS,
     };
     constexpr const char *q_chars = "qQrwWxiIs";
-    constexpr size_t q_charsLen = std::size(q_states);
+    constexpr size_t q_charsLen = Sci::size(q_states);
 
     // In most cases a value of 2 should be ample for the code in the
     // Ruby library, and the code the user is likely to enter.

@@ -182,7 +182,7 @@ public:
 	LexerAsm(const char *languageName_, int language_, char commentChar_) :
 		DefaultLexer(languageName_, language_,
 		(language_ == SCLEX_ASM) ? lexicalClassesAsm : lexicalClassesAs,
-		(language_ == SCLEX_ASM) ? std::size(lexicalClassesAsm) : std::size(lexicalClassesAs)),
+		(language_ == SCLEX_ASM) ? Sci::size(lexicalClassesAsm) : Sci::size(lexicalClassesAs)),
 		commentChar(commentChar_) {
 	}
 	void SCI_METHOD Release() override {

@@ -68,7 +68,7 @@ struct CompactIRI {
 			foundInvalidChar |= !setCompactIRI.Contains(ch);
 		}
 	}
-	[[nodiscard]] bool shouldHighlight() const noexcept {
+	wxNODISCARD bool shouldHighlight() const noexcept {
 		return !foundInvalidChar && colonCount == 1;
 	}
 };
@@ -97,10 +97,10 @@ struct EscapeSequence {
 		}
 		return true;
 	}
-	[[nodiscard]] bool atEscapeEnd() const noexcept {
+	wxNODISCARD bool atEscapeEnd() const noexcept {
 		return digitsLeft <= 0;
 	}
-	[[nodiscard]] bool isInvalidChar(int currChar) const noexcept {
+	wxNODISCARD bool isInvalidChar(int currChar) const noexcept {
 		return !setHexDigits.Contains(currChar);
 	}
 };

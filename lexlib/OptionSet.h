@@ -28,11 +28,11 @@ inline std::string JoinWordListDescriptions(const char *const wordListDescriptio
 
 // Allow OptionSet<T> to be called without knowing T
 struct OptionSetInterface {
-	[[nodiscard]] virtual const char *PropertyNames() const noexcept = 0;
-	[[nodiscard]] virtual int PropertyType(const char *name) const = 0;
-	[[nodiscard]] virtual const char *DescribeProperty(const char *name) const = 0;
-	[[nodiscard]] virtual const char *PropertyGet(const char *name) const = 0;
-	[[nodiscard]] virtual const char *DescribeWordListSets() const noexcept = 0;
+	wxNODISCARD virtual const char *PropertyNames() const noexcept = 0;
+	wxNODISCARD virtual int PropertyType(const char *name) const = 0;
+	wxNODISCARD virtual const char *DescribeProperty(const char *name) const = 0;
+	wxNODISCARD virtual const char *PropertyGet(const char *name) const = 0;
+	wxNODISCARD virtual const char *DescribeWordListSets() const noexcept = 0;
 };
 
 template <typename T>
@@ -93,7 +93,7 @@ class OptionSet : public OptionSetInterface {
 			}
 			return false;
 		}
-		[[nodiscard]] const char *Get() const noexcept {
+		wxNODISCARD const char *Get() const noexcept {
 			return value.c_str();
 		}
 	};
@@ -135,17 +135,17 @@ public:
 		nameToDef[name] = Option(pi, description);
 		AppendName(name);
 	}
-	[[nodiscard]] const char *PropertyNames() const noexcept final {
+	wxNODISCARD const char *PropertyNames() const noexcept final {
 		return names.c_str();
 	}
-	[[nodiscard]] int PropertyType(const char *name) const final {
+	wxNODISCARD int PropertyType(const char *name) const final {
 		typename OptionMap::const_iterator const it = nameToDef.find(name);
 		if (it != nameToDef.end()) {
 			return it->second.opType;
 		}
 		return SC_TYPE_BOOLEAN;
 	}
-	[[nodiscard]] const char *DescribeProperty(const char *name) const final {
+	wxNODISCARD const char *DescribeProperty(const char *name) const final {
 		typename OptionMap::const_iterator const it = nameToDef.find(name);
 		if (it != nameToDef.end()) {
 			return it->second.description.c_str();
@@ -161,7 +161,7 @@ public:
 		return false;
 	}
 
-	[[nodiscard]] const char *PropertyGet(const char *name) const final {
+	wxNODISCARD const char *PropertyGet(const char *name) const final {
 		typename OptionMap::const_iterator const it = nameToDef.find(name);
 		if (it != nameToDef.end()) {
 			return it->second.Get();
@@ -173,7 +173,7 @@ public:
 		wordLists = JoinWordListDescriptions(wordListDescriptions);
 	}
 
-	[[nodiscard]] const char *DescribeWordListSets() const noexcept final {
+	wxNODISCARD const char *DescribeWordListSets() const noexcept final {
 		return wordLists.c_str();
 	}
 };

@@ -59,7 +59,7 @@ class LexerBatch : public DefaultLexer {
 	std::string wordLists;
 public:
 	explicit LexerBatch() :
-		DefaultLexer("batch", SCLEX_BATCH, lexicalClasses, std::size(lexicalClasses)) {
+		DefaultLexer("batch", SCLEX_BATCH, lexicalClasses, Sci::size(lexicalClasses)) {
 		wordLists = JoinWordListDescriptions(batchWordListDesc);
 	}
 	LexerBatch(const LexerBatch &) = delete;

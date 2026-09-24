@@ -124,7 +124,7 @@ class LexerErrorList : public DefaultLexer {
 	OptionSetErrorList osErrorList;
 public:
 	LexerErrorList() :
-		DefaultLexer("errorlist", SCLEX_ERRORLIST, lexicalClasses, std::size(lexicalClasses)) {
+		DefaultLexer("errorlist", SCLEX_ERRORLIST, lexicalClasses, Sci::size(lexicalClasses)) {
 	}
 
 	const char *SCI_METHOD PropertyNames() override {
