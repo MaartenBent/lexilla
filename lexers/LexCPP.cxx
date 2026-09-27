@@ -238,7 +238,7 @@ constexpr bool IsStreamCommentStyle(int style) noexcept {
 		style == SCE_C_COMMENTDOCKEYWORDERROR;
 }
 
-constexpr bool IsStringStyle(int style) noexcept {
+bool IsStringStyle(int style) noexcept {
 	return AnyOf(style, SCE_C_STRING, SCE_C_CHARACTER, SCE_C_STRINGRAW);
 }
 

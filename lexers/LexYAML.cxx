@@ -59,8 +59,8 @@ unsigned int SpaceCount(const char* lineBuffer) noexcept {
 	return spaces;
 }
 
-constexpr bool EmptyLine(std::string_view line) noexcept {
-	return line.find_first_not_of("\n\r") == std::string_view::npos;
+bool EmptyLine(std::string const& line) noexcept {
+	return line.find_first_not_of("\n\r") == std::string::npos;
 }
 
 bool KeywordAtChar(const char* lineBuffer, const char* startComment, const WordList &keywords) noexcept {

@@ -8,6 +8,8 @@
 #ifndef LEXACCESSOR_H
 #define LEXACCESSOR_H
 
+#include "LexillaCompat.h"
+
 namespace Lexilla {
 
 enum class EncodingType { eightBit, unicode, dbcs };
@@ -113,7 +115,7 @@ public:
 		}
 		return true;
 	}
-	bool Match(Sci_Position pos, std::string const& sv);
+	wxNODISCARD bool Match(Sci_Position pos, std::string const& sv);
 	bool MatchIgnoreCase(Sci_Position pos, const char *s);
 
 	// Get first len - 1 characters in range [startPos_, endPos_).

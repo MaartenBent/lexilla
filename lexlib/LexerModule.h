@@ -8,6 +8,8 @@
 #ifndef LEXERMODULE_H
 #define LEXERMODULE_H
 
+#include "LexillaCompat.h"
+
 namespace Lexilla {
 
 class Accessor;
@@ -49,15 +51,15 @@ public:
 		LexerFactoryFunction fnFactory_,
 		const char *languageName_,
 		const char * const wordListDescriptions_[]=nullptr) noexcept;
-	[[nodiscard]] int GetLanguage() const noexcept;
+	wxNODISCARD int GetLanguage() const noexcept;
 
 	// -1 is returned if no WordList information is available
-	[[nodiscard]] int GetNumWordLists() const noexcept;
-	[[nodiscard]] const char *GetWordListDescription(int index) const noexcept;
-	[[nodiscard]] const LexicalClass *LexClasses() const noexcept;
-	[[nodiscard]] size_t NamedStyles() const noexcept;
+	wxNODISCARD int GetNumWordLists() const noexcept;
+	wxNODISCARD const char *GetWordListDescription(int index) const noexcept;
+	wxNODISCARD const LexicalClass *LexClasses() const noexcept;
+	wxNODISCARD size_t NamedStyles() const noexcept;
 
-	[[nodiscard]] Scintilla::ILexer5 *Create() const;
+	wxNODISCARD Scintilla::ILexer5 *Create() const;
 
 	void Lex(Sci_PositionU startPos, Sci_Position lengthDoc, int initStyle,
                   WordList *keywordlists[], Accessor &styler) const;
