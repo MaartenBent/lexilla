@@ -53,7 +53,7 @@ class OptionSet : public OptionSetInterface {
 		Option() :
 			opType(SC_TYPE_BOOLEAN), pb(nullptr) {
 		}
-		Option(plcob pb_, std::string const& description_="") :
+		explicit Option(plcob pb_, std::string const& description_="") :
 			opType(SC_TYPE_BOOLEAN), pb(pb_), description(description_) {
 		}
 		Option(plcoi pi_, std::string const& description_) :
@@ -125,7 +125,7 @@ public:
 	template <typename E>
 	void DefineProperty(const char *name, E T::*pe, std::string const& description="") {
 #if wxCHECK_CXX_STD(201703L)
-		static_assert(std::is_enum<E>::value);
+		static_assert(std::is_enum_v<E>);
 #endif
 		plcoi pi {};
 #if wxCHECK_CXX_STD(201703L)
