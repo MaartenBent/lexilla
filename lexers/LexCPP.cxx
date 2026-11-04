@@ -848,7 +848,7 @@ void SCI_METHOD LexerCPP::Lex(Sci_PositionU startPos, Sci_Position length, int i
 	bool continuationLine = false;
 	bool isIncludePreprocessor = false;
 	bool isStringInPreprocessor = false;
-	bool inRERange = false;
+	bool insideRegexCharacterClass = false; // inside regex character class []
 	bool seenDocKeyBrace = false;
 
 	std::vector<InterpolatingState> interpolatingStack;
@@ -884,9 +884,14 @@ void SCI_METHOD LexerCPP::Lex(Sci_PositionU startPos, Sci_Position length, int i
 	// look back to set chPrevNonWhite properly for better regex colouring
 	if (startPos > 0) {
 		Sci_Position back = startPos;
-		while (--back && IsSpaceEquiv(MaskActive(styler.StyleAt(back))))
-			;
-		if (MaskActive(styler.StyleAt(back)) == SCE_C_OPERATOR) {
+		int style = 0;
+		while (--back) {
+			style = MaskActive(styler.StyleAt(back));
+			if (!IsSpaceEquiv(style)) {
+				break;
+			}
+		}
+		if (AnyOf(style, SCE_C_OPERATOR, SCE_C_NUMBER, SCE_C_IDENTIFIER, SCE_C_WORD, SCE_C_WORD2)) {
 			chPrevNonWhite = styler.SafeGetCharAt(back);
 		}
 	}
@@ -953,7 +958,7 @@ void SCI_METHOD LexerCPP::Lex(Sci_PositionU startPos, Sci_Position length, int i
 			visibleChars = 0;
 			lastWordWasUUID = false;
 			isIncludePreprocessor = false;
-			inRERange = false;
+			insideRegexCharacterClass = false;
 			if (preproc.IsInactive()) {
 				activitySet = inactiveFlag;
 				sc.SetState(sc.state | activitySet);
@@ -1263,7 +1268,7 @@ void SCI_METHOD LexerCPP::Lex(Sci_PositionU startPos, Sci_Position length, int i
 			case SCE_C_REGEX:
 				if (sc.atLineStart) {
 					sc.SetState(SCE_C_DEFAULT|activitySet);
-				} else if (!inRERange && sc.ch == '/') {
+				} else if (!insideRegexCharacterClass && sc.ch == '/') {
 					sc.Forward();
 					while (IsLowerCase(sc.ch))
 						sc.Forward();    // gobble regex flags
@@ -1272,9 +1277,9 @@ void SCI_METHOD LexerCPP::Lex(Sci_PositionU startPos, Sci_Position length, int i
 					// Gobble up the escaped character
 					sc.Forward();
 				} else if (sc.ch == '[') {
-					inRERange = true;
+					insideRegexCharacterClass = true;
 				} else if (sc.ch == ']') {
-					inRERange = false;
+					insideRegexCharacterClass = false;
 				}
 				break;
 			case SCE_C_STRINGEOL:
@@ -1373,7 +1378,7 @@ void SCI_METHOD LexerCPP::Lex(Sci_PositionU startPos, Sci_Position length, int i
 				       || !FollowsPostfixOperator(sc, styler))
 				   && CheckRegexClosed(sc)) {
 				sc.SetState(SCE_C_REGEX|activitySet);	// JavaScript's RegEx
-				inRERange = false;
+				insideRegexCharacterClass = false;
 			} else if (sc.ch == '\"') {
 				if (sc.chPrev == 'R') {
 					styler.Flush();
@@ -1723,6 +1728,11 @@ void LexerCPP::EvaluateTokens(Tokens &tokens, const SymbolTable &preprocessorDef
 						}
 
 						// Remove invocation
+						if (tok >= tokens.size()) {
+							// Incomplete invocation, possibly missing ) like MACRO( so remove it and don't insert value.
+							tokens.erase(tokens.begin() + i, tokens.end());
+							continue;
+						}
 						tokens.erase(tokens.begin() + i, tokens.begin() + tok + 1);
 
 						// Substitute values into macro
