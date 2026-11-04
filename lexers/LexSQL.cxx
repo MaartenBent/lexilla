@@ -63,7 +63,7 @@ bool IsANumberChar(int ch, int chPrev) noexcept {
 	        ch == '.' || ((ch == '-' || ch == '+') && chPrev < 0x80 && toupper(chPrev) == 'E'));
 }
 
-constexpr int GetQuoteComplement(int ch) noexcept {
+int GetQuoteComplement(int ch) noexcept {
 	switch (ch) {
 	case '<': return '>';
 	case '(': return ')';

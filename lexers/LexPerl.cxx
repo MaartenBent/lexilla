@@ -1313,7 +1313,7 @@ void SCI_METHOD LexerPerl::Lex(Sci_PositionU startPos, Sci_Position length, int 
 						}
 						// (continued for ' delim)
 						// Falls through.
-						[[fallthrough]];
+						wxFALLTHROUGH;
 					default:	// non-interpolated path
 						sc.Forward(sLen);
 					}

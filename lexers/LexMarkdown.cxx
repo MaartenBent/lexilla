@@ -168,11 +168,11 @@ bool IsValidHrule(const Sci_PositionU endPos, StyleContext &sc) {
 
 enum class FrontMatter { None, YAML, TOML, JSON };
 
-constexpr std::string_view markYAML = "---";
-constexpr std::string_view markTOML = "+++";
-constexpr std::string_view markJSON = ";;;";
+constexpr const char* markYAML = "---";
+constexpr const char* markTOML = "+++";
+constexpr const char* markJSON = ";;;";
 
-constexpr FrontMatter FrontMatterFromString(std::string_view value) {
+FrontMatter FrontMatterFromString(std::string const& value) {
     if (value == markYAML) {
         return FrontMatter::YAML;
     }
@@ -189,8 +189,8 @@ FrontMatter DetectFrontMatter(const Accessor &styler) {
     return FrontMatterFromString(styler.GetRange(0, 3));
 }
 
-constexpr std::string_view header5 = "#####";
-constexpr std::string_view header6 = "######";
+constexpr const char* header5 = "#####";
+constexpr const char* header6 = "######";
 
 // Options used for LexerMarkdown
 struct OptionsMarkdown {
@@ -241,7 +241,7 @@ class LexerMarkdown : public DefaultLexer {
     FrontMatter frontMatter = FrontMatter::None;
 public:
     LexerMarkdown() :
-        DefaultLexer("markdown", SCLEX_MARKDOWN, lexicalClasses, std::size(lexicalClasses)) {
+        DefaultLexer("markdown", SCLEX_MARKDOWN, lexicalClasses, Sci::size(lexicalClasses)) {
         SetOptionSet(&osMarkdown);
     }
     // Deleted so LexerMarkdown objects can not be copied.
@@ -414,12 +414,12 @@ void SCI_METHOD LexerMarkdown::Lex(Sci_PositionU startPos, Sci_Position length, 
                 if (headerEOLFill)
                     sc.SetState(SCE_MARKDOWN_HEADER6);
                 else
-                    SetStateAndZoom(SCE_MARKDOWN_HEADER6, header6.length(), '#', sc);
+                    SetStateAndZoom(SCE_MARKDOWN_HEADER6, std::string(header6).length(), '#', sc);
             } else if (sc.Match("#####")) {
                 if (headerEOLFill)
                     sc.SetState(SCE_MARKDOWN_HEADER5);
                 else
-                    SetStateAndZoom(SCE_MARKDOWN_HEADER5, header5.length(), '#', sc);
+                    SetStateAndZoom(SCE_MARKDOWN_HEADER5, std::string(header5).length(), '#', sc);
             } else if (sc.Match("####")) {
                 if (headerEOLFill)
                     sc.SetState(SCE_MARKDOWN_HEADER4);

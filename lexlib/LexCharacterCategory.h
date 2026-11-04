@@ -33,14 +33,14 @@ private:
 	std::vector<unsigned char> dense;
 public:
 	CharacterCategoryMap();
-	[[nodiscard]] CharacterCategory CategoryFor(int character) const noexcept {
+	wxNODISCARD CharacterCategory CategoryFor(int character) const noexcept {
 		if (static_cast<size_t>(character) < dense.size()) {
 			return static_cast<CharacterCategory>(dense[character]);
 		}
 		// binary search through ranges
 		return CategoriseCharacter(character);
 	}
-	[[nodiscard]] int Size() const noexcept;
+	wxNODISCARD int Size() const noexcept;
 	void Optimize(int countCharacters);
 };
 

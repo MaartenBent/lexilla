@@ -12,8 +12,8 @@
 #include <algorithm>
 #include <iterator>
 
-#include "LexCharacterCategory.h"
 #include "LexillaCompat.h"
+#include "LexCharacterCategory.h"
 
 namespace Lexilla {
 
